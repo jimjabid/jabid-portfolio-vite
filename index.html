@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jabid´s Portfolio</title>
+    <!-- ===================== RemixIcon ===================== -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body class="grid__body" id="body">
+    <canvas id="myThreeJsCanvas"> </canvas>
+    <div class="blocks">
+      <div class="block block-top">
+        <h1 class="loading__text section__title">WELCOME</h1>
+      </div>
+      <div class="block block-bottom">
+        <div class="loader__wrapper">
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <div class="close">
+        <i class="ri-close-line"></i>
+      </div>
+      <div class="menu-toggle"><i class="ri-menu-4-line"></i></div>
+      <ul class="nav__list nav__menu">
+        <li class="nav__item">
+          <a href="#home" class="nav__link">Home</a>
+        </li>
+        <li class="nav__item">
+          <a href="#about" class="nav__link">About</a>
+        </li>
+        <li class="nav__item">
+          <a href="#projects" class="nav__link">Projects</a>
+        </li>
+        <li class="nav__item">
+          <a href="#contact" class="nav__link">Contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="section home grid" id="home">
+      <div class="home__container container">
+        <div class="home__data">
+          <h1 class="home__greeting section__title">I am</h1>
+          <div id="wrapper-home-name">
+            <h1 class="home__name home__name-change">Jabid Jimenez</h1>
+            <h1 class="home__name home__name-dev home__name-change">
+              Web Developer
+            </h1>
+            <h1 class="home__name home__name-change">Web Designer</h1>
+          </div>
+
+          <div class="home__social">
+            <a href="#" class="home__social-link">
+              <i class="ri-linkedin-box-line"></i>
+            </a>
+            <a href="#" class="home__social-link">
+              <i class="ri-github-line"></i>
+            </a>
+            <a href="#" class="home__social-link">
+              <i class="ri-whatsapp-line"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="home__img-container">
+          <div class="home__cards" id="card--design">
+            <i class="ri-pencil-ruler-2-line"></i>
+            <p>Web Design</p>
+          </div>
+          <!-- <img
+            class="home-img"
+            src="./assets/img/home-img.png"
+            alt="home-image"
+          /> -->
+          <div class="home__cards" id="card--development">
+            <i class="ri-code-box-line"></i>
+            <p>Web Development</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about grid" id="about">
+      <div class="title__container about-title">
+        <h1 class="section__title about-title">ABOUT</h1>
+      </div>
+
+      <div class="about__container container">
+        <div class="about__box">
+          <i class="ri-award-line about__icon"></i>
+          <h3 class="about__box-title">Experience</h3>
+          <span class="about__box-subtitle"
+            >3 years experienced IT professional with a passion for web design
+            and development.</span
+          >
+        </div>
+
+        <div class="about__box">
+          <i class="ri-layout-2-line about__icon"></i>
+          <h3 class="about__box-title">UI/UX</h3>
+          <span class="about__box-description"
+            >With a 2 years background in sales, I understand the importance of
+            creating user-friendly interfaces that engage and delight
+            customers.</span
+          >
+        </div>
+
+        <div class="about__box">
+          <i class="ri-team-line about__icon"></i>
+          <h3 class="about__box-title">Collaboration</h3>
+          <span class="about__box-description">
+            Let's work together to create something beautiful and
+            effective!</span
+          >
+        </div>
+        <div id="skills--box">
+          <i class="ri-settings-3-line"></i>
+          <h3 class="about__box-title">Skills</h3>
+          <div class="about__box-skills-container">
+            <div class="about__box-skill">
+              <img src="/img/icons8-html-5-48.png" alt="" />
+              <span>HTML</span>
+            </div>
+            <div class="about__box-skill">
+              <img src="/img/icons8-css3-48.png" alt="" />
+              <span>CSS</span>
+            </div>
+            <div class="about__box-skill">
+              <img src="/img/icons8-javascript-48.png" alt="" />
+              <span>JavaScript</span>
+            </div>
+            <div class="about__box-skill">
+              <img src="/img/icons8-figma-48.png" alt="" />
+              <span>Figma</span>
+            </div>
+            <div class="about__box-skill">
+              <img src="/img/icons8-git-48.png" alt="" />
+              <span>Git</span>
+            </div>
+            <div class="about__box-skill">
+              <img src="/img/icons8-npm-48.png" alt="" />
+              <span>NPM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section projects grid" id="projects">
+      <div class="title__container project-title">
+        <h1 class="section__title project-title">Projects</h1>
+      </div>
+
+      <div class="projects__container container">
+        <div class="sticky__wrapper">
+          <div class="slider__wrapper">
+            <ul class="slider">
+              <li class="slider__item">
+                <div class="slider__img_wrapper">
+                  <div class="project__hover">
+                    <h1 class="project__title">Portfolio</h1>
+                    <p class="project__description">Design and Development</p>
+                    <div class="project__buttons">
+                      <a href="#" class="project__button">
+                        Visit site
+                        <i class="ri-arrow-right-line articles__icon"></i>
+                      </a>
+                      <a href="#" class="project__button">
+                        Visit figma
+                        <i class="ri-arrow-right-line articles__icon"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <img
+                    src="https://picsum.photos/id/5/700
+                    "
+                    alt="slider--image"
+                    class="slider__img"
+                  />
+                </div>
+              </li>
+              <li class="slider__item">
+                <div class="slider__img_wrapper">
+                  <div class="project__hover">
+                    <h1 class="project__title">Portfolio</h1>
+                    <p class="project__description">Design and Development</p>
+                    <div class="project__buttons">
+                      <a href="#" class="project__button">
+                        Visit site
+                        <i class="ri-arrow-right-line articles__icon"></i>
+                      </a>
+                      <a href="#" class="project__button">
+                        Visit figma
+                        <i class="ri-arrow-right-line articles__icon"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <img
+                    src="https://picsum.photos/id/0/700
+                    "
+                    alt="slider--image"
+                    class="slider__img"
+                  />
+                </div>
+              </li>
+              <li class="slider__item">
+                <div class="slider__img_wrapper">
+                  <div class="project__hover">
+                    <h1 class="project__title">Portfolio</h1>
+                    <p class="project__description">Design and Development</p>
+                    <div class="project__buttons">
+                      <a href="#" class="project__button">
+                        Visit site
+                        <i class="ri-arrow-right-line articles__icon"></i>
+                      </a>
+                      <a href="#" class="project__button">
+                        Visit figma
+                        <i class="ri-arrow-right-line articles__icon"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <img
+                    src="https://picsum.photos/id/2/700
+                    "
+                    alt="slider--image"
+                    class="slider__img"
+                  />
+                </div>
+              </li>
+              <li class="slider__item">
+                <div class="slider__img_wrapper">
+                  <div class="project__hover">
+                    <h1 class="project__title">Portfolio</h1>
+                    <p class="project__description">Design and Development</p>
+                    <div class="project__buttons">
+                      <a href="#" class="project__button">
+                        Visit site
+                        <i class="ri-arrow-right-line articles__icon"></i>
+                      </a>
+                      <a href="#" class="project__button">
+                        Visit figma
+                        <i class="ri-arrow-right-line articles__icon"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <img
+                    src="https://picsum.photos/id/3/700
+                    "
+                    alt="slider--image"
+                    class="slider__img"
+                  />
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section contact grid" id="contact">
+      <div class="title__container contact-title">
+        <h1 class="section__title contact-title">Contact</h1>
+      </div>
+      <div class="contact__container container">
+        <div class="contact__wrapper">
+          <h2 class="contact__subtitle">Send Me a Message</h2>
+          <div class="contact__link-wrapper">
+            <a
+              href="mailto:jabidandresjimenezserrano@gmail.com"
+              class="contact__link"
+              >hello@jabidjim.com</a
+            >
+          </div>
+        </div>
+        <div class="contact__wrapper">
+          <h2 class="contact__subtitle">OR</h2>
+          <h2 class="contact__subtitle">Connect with me on social</h2>
+
+          <div class="contact__social-links-wrapper">
+            <div class="contact__link-wrapper">
+              <a href="#" class="contact__link">GITHUB</a>
+            </div>
+            <div class="contact__link-wrapper">
+              <a href="#" class="contact__link">LINKEDIN</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <h3 class="footer">Designed and developed by:</h3>
+        <svg
+          width="96"
+          height="65"
+          viewBox="0 0 96 65"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.03525 32.7237C22.6543 39.7152 42.7629 13.5098 42.1296 8.19004C41.4486 2.46975 37.0906 21.4103 34.2306 31.3254C31.3706 41.2406 24.2886 57.6388 20.3391 60.9438C10.7679 68.9533 5.22191 59.2913 10.6696 53.9524C14.4101 50.2865 33.0225 39.2171 42.1296 32.7237C58.6087 20.9742 61.6049 2.0884 57.3695 8.82563C55.7472 11.4062 55.4763 22.9357 53.161 29.6729C50.8458 36.4101 47.441 60.3082 41.1763 62.9777C32.8756 66.5147 26.6971 59.779 31.6429 57.1303C39.9505 52.6812 107.774 4.63073 82.442 2.08837C57.1106 -0.453976 47.441 1.32565 62.2858 8.8256C65.3182 10.3576 106.548 22.0458 91.8392 31.3254C80.0723 38.7491 26.3769 36.7068 1 34.7576"
+            stroke="white"
+            stroke-width="2"
+          />
+        </svg>
+      </footer>
+    </section>
+
+    <!-- ===================== Main js ===================== -->
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

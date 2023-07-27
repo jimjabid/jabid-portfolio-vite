@@ -1,13 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{js,jsx}"],
-  mode: "jit",
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
         "body-color": "#0a151f",
         primary: "#acd4f6",
         secondary: "#224b6da6",
+        "nav-bg": "#224b6d",
         tertiary: "#f0f5fa",
       },
       boxShadow: {

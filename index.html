@@ -10,11 +10,12 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/index.css" />
   </head>
-  <body class="grid__body" id="body">
-    <canvas id="myThreeJsCanvas"> </canvas>
-    <div class="blocks">
+  <body class="grid__body relative z-0 bg-body-color" id="body">
+    <canvas id="myThreeJsCanvas" class="fixed top-0 bottom-0 left-0 right-0">
+    </canvas>
+    <!-- <div class="blocks">
       <div class="block block-top">
         <h1 class="loading__text section__title">WELCOME</h1>
       </div>
@@ -23,30 +24,78 @@
           <div class="loader"></div>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <nav class="nav">
-      <div class="close">
-        <i class="ri-close-line"></i>
+    <nav class="sm:px-24 px-16 w-full flex items-center py-10 fixed top-0 z-20">
+      <img
+        id="nav-toggle"
+        src="/img/menu.svg"
+        alt="menu"
+        class="sm:hidden w-[28px] h-[28px] object-contain cursor-pointer absolute top-[2rem] right-[2rem]"
+      />
+      <div
+        class="sm:flex hidden items-center justify-end w-full max-w-7xl mx-auto"
+      >
+        <ul class="list-none sm:flex flex-row sm:gap-20">
+          <li
+            class="nav-link text-tertiary hover:text-primary text-[18px] font-medium cursor-pointer font-body"
+          >
+            <a href="#home" class="font-body nav__link">Home</a>
+          </li>
+          <li
+            class="nav-link text-tertiary hover:text-primary text-[18px] font-medium cursor-pointer font-body"
+          >
+            <a href="#about" class="font-body nav__link">About</a>
+          </li>
+          <li
+            class="nav-link text-tertiary hover:text-primary text-[18px] font-medium cursor-pointer font-body"
+          >
+            <a href="#projects" class="font-body nav__link">Works</a>
+          </li>
+          <li
+            class="nav-link text-tertiary hover:text-primary text-[18px] font-medium cursor-pointer font-body"
+          >
+            <a href="#contact" class="font-body nav__link">Contact</a>
+          </li>
+        </ul>
       </div>
-      <div class="menu-toggle"><i class="ri-menu-4-line"></i></div>
-      <ul class="nav__list nav__menu">
-        <li class="nav__item">
-          <a href="#home" class="nav__link">Home</a>
-        </li>
-        <li class="nav__item">
-          <a href="#about" class="nav__link">About</a>
-        </li>
-        <li class="nav__item">
-          <a href="#projects" class="nav__link">Projects</a>
-        </li>
-        <li class="nav__item">
-          <a href="#contact" class="nav__link">Contact</a>
-        </li>
-      </ul>
+      <div
+        id="nav-menu"
+        class="sm:hidden flex absolute top-0 right-0 w-full h-screen flex-1 justify-center items-center p-6 bg-nav-bg z-10"
+      >
+        <img
+          id="nav-close"
+          src="/img/close.svg"
+          alt="menu"
+          class="nav-close w-[28px] h-[28px] object-contain cursor-pointer absolute top-[2rem] right-[2rem]"
+        />
+
+        <ul class="list-none sm:flex sm:gap-20 flex-col gap-4">
+          <li
+            class="nav-link text-tertiary hover:text-primary text-[58px] font-medium cursor-pointer font-body"
+          >
+            <a href="#home" class="font-body nav__link">Home</a>
+          </li>
+          <li
+            class="nav-link text-tertiary hover:text-primary text-[58px] font-medium cursor-pointer font-body"
+          >
+            <a href="#about" class="font-body nav__link">About</a>
+          </li>
+          <li
+            class="nav-link text-tertiary hover:text-primary text-[58px] font-medium cursor-pointer font-body"
+          >
+            <a href="#projects" class="font-body nav__link">Works</a>
+          </li>
+          <li
+            class="nav-link text-tertiary hover:text-primary text-[58px] font-medium cursor-pointer font-body"
+          >
+            <a href="#contact" class="font-body nav__link">Contact</a>
+          </li>
+        </ul>
+      </div>
     </nav>
 
-    <section class="section home grid" id="home">
+    <!-- <section class="section home grid" id="home">
       <div class="home__container container">
         <div class="home__data">
           <h1 class="home__greeting section__title">I am</h1>
@@ -76,18 +125,14 @@
             <i class="ri-pencil-ruler-2-line"></i>
             <p>Web Design</p>
           </div>
-          <!-- <img
-            class="home-img"
-            src="./assets/img/home-img.png"
-            alt="home-image"
-          /> -->
+       
           <div class="home__cards" id="card--development">
             <i class="ri-code-box-line"></i>
             <p>Web Development</p>
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <section class="section about grid" id="about">
       <div class="title__container about-title">

@@ -1,47 +1,42 @@
 import * as THREE from "three";
-
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { ParametricGeometry } from "three/addons/geometries/ParametricGeometry.js";
-
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-export function threeBg() {
+export const ballBgCanvas = () => {
+  // Register GSAP ScrollTrigger plugin
   gsap.registerPlugin(ScrollTrigger);
+
+  // Get the canvas element
   const canvas = document.getElementById("myThreeJsCanvas");
 
+  // Setup the WebGL renderer
   const renderer = new THREE.WebGL1Renderer({
     canvas,
     antialias: true,
   });
-
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setClearColor("#0a151f", 1); // Set background color
 
-  //webgl background color
-
-  renderer.setClearColor("#0a151f", 1);
-
-  // setup a scene
+  // Setup the scene
   const scene = new THREE.Scene();
 
-  // set up a camera
+  // Setup the camera
   const camera = new THREE.PerspectiveCamera(
     50,
     window.innerWidth / window.innerHeight,
     1,
     1000
   );
-  // set up a camera Position
   const initialCameraPosition = new THREE.Vector3(0, 0, 2.5);
   camera.position.copy(initialCameraPosition);
   camera.zoom = 1.5;
   renderer.render(scene, camera);
 
-  // set up a geometry
-
+  // Setup the geometry
   let geometry = new THREE.IcosahedronGeometry(1, 15);
 
+  // Setup the material
   let material = new THREE.MeshPhysicalMaterial({
     color: 0x224b6d,
     roughness: 0,
@@ -52,50 +47,46 @@ export function threeBg() {
     side: THREE.DoubleSide,
   });
 
-  // set up a mesh wih geometry + material
+  // Create a mesh with geometry and material
   const mesh = new THREE.Mesh(geometry, material);
-
+  // Check if screen width is below 650px
+  if (window.innerWidth < 650) {
+    mesh.scale.set(0.8, 0.8, 0.8);
+  } else {
+    mesh.scale.set(1.15, 1.15, 1.15); // Scale the mesh
+  }
   scene.add(mesh);
 
+  // Setup lights
   let ambientLight = new THREE.AmbientLight(0xcccccc, 0.8);
-
-  // let directionalLight = new THREE.DirectionalLight(0xffffff, 2.5);
   let directionalLight = new THREE.SpotLight(0xffffff, 2);
-
   directionalLight.position.set(-1, 1, 1);
-
   scene.add(ambientLight, directionalLight);
 
+  // Animation function
   function animate() {
     requestAnimationFrame(animate);
-
-    // camera.position.z -= 0.01;
     mesh.rotation.y -= 0.0005;
     renderer.render(scene, camera);
   }
   animate();
-  const body = document.querySelector("#body");
 
+  // GSAP ScrollTrigger for animation based on scroll progress
+  const body = document.querySelector("#body");
+  const meshRef = { current: mesh }; // Create a ref for the mesh
   ScrollTrigger.create({
     trigger: body,
     start: "top top",
-    // end: "bottom bottom",
     end: () => "+=" + body.offsetHeight * 1.25,
-    onUpdate: (self) => {
-      const progress = self.progress;
-      const rotationAmount = Math.PI * 2 * progress; // Calculate the rotation amount based on scroll progress
-      mesh.rotation.x = rotationAmount * -1;
-      // Zoom in based on scroll progress
-      const zoomAmount = 1.5 + progress;
-      camera.zoom = zoomAmount;
-      camera.updateProjectionMatrix();
-    },
+    onUpdate: handleScroll,
   });
 
-  function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
+  function handleScroll(self) {
+    const progress = self.progress;
+    const rotationAmount = Math.PI * 2 * progress;
+    meshRef.current.rotation.x = rotationAmount * -1;
+    const zoomAmount = 1 + progress;
+    camera.zoom = zoomAmount;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
   }
-  onWindowResize();
-}
+};

@@ -1,18 +1,18 @@
-import { loader } from "./src/loader.js";
+// import { loader } from "./src/loader.js";
 import { smoothScroll } from "./src/smoothSCroll.js";
-import { threeBg } from "./src/3DAnimations/threeBg.js";
-//import { animateSVG } from "./src/animateSVG";
-import { home } from "./src/home.js";
+import { ballBgCanvas } from "./src/canvas/ballBgCanvas.js";
+import { navBar } from "./src/navbar.js";
+//import { home } from "./src/home.js";
 import { about } from "./src/about.js";
 import { projects } from "./src/projects.js";
 import { contact } from "./src/contact.js";
 
 function init() {
-  loader();
+  // loader();
   smoothScroll();
-  threeBg();
-  //animateSVG();
-  home();
+  ballBgCanvas();
+  navBar();
+  //home();
   about();
   projects();
   contact();

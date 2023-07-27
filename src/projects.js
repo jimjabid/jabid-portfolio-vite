@@ -76,7 +76,6 @@ export function projects() {
       scrub: true,
       pin: true,
       anticipatePin: 1,
-      markers: true,
     },
   });
 

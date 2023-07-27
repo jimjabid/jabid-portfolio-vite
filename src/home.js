@@ -1,170 +1,100 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SplitTextJS from "./utils/splitText";
 
+// Register GSAP ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-class SplitTextJS {
-  constructor(_target) {
-    this.result = new Object();
-    this.result.originalText = _target.innerText;
-    this.result.splitted = this.split(_target);
-    this.result.words = this.result.splitted.querySelectorAll(
-      ".SplitTextJS-wrapper"
-    );
-    this.result.chars =
-      this.result.splitted.querySelectorAll(".SplitTextJS-char");
-    this.result.spaces = this.result.splitted.querySelectorAll(
-      ".SplitTextJS-spacer"
-    );
-    return this.result;
-  }
-  createSpan(_class) {
-    let span = document.createElement("span");
-    span.style.display = "inline-block";
-    span.className = _class;
-    return span;
-  }
-  split(_target) {
-    let containerArray = new Array();
-    const splittedTarget = _target.innerText.split(" ");
-    let counter = splittedTarget.length;
-    splittedTarget.map((word) => {
-      const wrapper = this.createSpan("SplitTextJS-wrapper");
-      word.split(/(?!^)/).map((char) => {
-        let el = this.createSpan("SplitTextJS-char");
-        el.innerText = char;
-        wrapper.appendChild(el);
-      });
-      counter--;
-      containerArray.push(wrapper);
-
-      if (counter > 0) {
-        let space = this.createSpan("SplitTextJS-char SplitTextJS-spacer");
-        space.innerHTML = "&nbsp;";
-        containerArray.push(space);
-      }
-    });
-    _target.innerHTML = "";
-    containerArray.forEach((child) => {
-      _target.appendChild(child);
-    });
-    return _target;
-  }
-}
-
 export function home() {
-  // HERE STARTS THE ANIMATION FOR THE HOME TITLES
-  const titles = document.querySelectorAll(".home__name-change");
+  // ANIMATE THE HOME TITLES
+  const titles = document.querySelectorAll(".hero-title");
 
+  // Create a timeline for the title animation
   var titleTL = gsap.timeline({
-    repeat: -1,
+    repeat: -1, // Repeat the animation indefinitely
   });
 
+  // Loop through each title element and animate the split characters
   titles.forEach((title) => {
-    const splitTitle = new SplitTextJS(title);
+    const splitTitle = new SplitTextJS(title); // Split the title into individual characters
 
-    titleTL
-      .from(
-        splitTitle.chars,
-        { y: 16, opacity: 0, rotateX: -90, stagger: 0.02 },
-        "<0.8"
-      )
-      .to(
-        splitTitle.chars,
-        { y: -16, opacity: 0, rotateX: 90, stagger: 0.02 },
-        "<2"
-      );
+    // Animation to reveal the characters
+    titleTL.from(
+      splitTitle.chars,
+      { y: 16, opacity: 0, rotateX: -90, stagger: 0.02 },
+      "<0.8" // Starts after 0.8 seconds
+    );
+
+    // Animation to hide the characters
+    titleTL.to(
+      splitTitle.chars,
+      { y: -16, opacity: 0, rotateX: 90, stagger: 0.02 },
+      "<2" // Starts after 2 seconds
+    );
   });
 
-  // HERE STARTS THE LOAD REVEAL ANIMATION FOR THE BG
-
-  const canvass = document.querySelectorAll("#myThreeJsCanvas");
-
-  gsap.from(canvass, {
-    duration: 2,
-    opacity: 0,
-    delay: 2.9,
-
-    ease: "back.out",
-  });
-
-  // HERE STARTS THE LOAD REVEAL ANIMATION FOR THE NAV
-  const navItem = document.querySelectorAll(".nav__item");
-
-  gsap.from(navItem, {
-    duration: 2,
-    yPercent: -100,
-    opacity: 0,
-    delay: 2.9,
-    stagger: 0.2,
-    ease: "back.out",
-  });
-
-  // HERE STARTS THE LOAD REVEAL ANIMATION FOR THE RIGHT SIDE OF THE HOME PAGE ON
-  // LARGE SCREENS
-  const homeLeftCol = document.querySelector(".home__data");
+  // ANIMATE THE ELEMENTS IN THE LEFT COLUMN OF THE HOME SECTION
+  const homeLeftCol = document.querySelector(".home-left-col");
   const childElementsLeftCol = homeLeftCol.querySelectorAll(":scope > *");
 
   gsap.from(childElementsLeftCol, {
     duration: 2,
     yPercent: -100,
     opacity: 0,
-    delay: 2.9,
-
-    stagger: 0.2,
-    ease: "back.out",
+    delay: 2.9, // Delay the animation start by 2.9 seconds
+    stagger: 0.2, // Stagger the animations for each child element
+    ease: "back.out", // Use a back-out easing function
   });
 
-  const homeRightCol = document.querySelector(".home__img-container");
+  // ANIMATE THE ELEMENTS IN THE RIGHT COLUMN OF THE HOME SECTION
+  const homeRightCol = document.querySelector(".img-container");
   gsap
     .timeline()
     .from(homeRightCol, {
       duration: 2,
       yPercent: 100,
       opacity: 0,
-      delay: 2.9,
-      ease: "power3.out",
+      delay: 2.9, // Delay the animation start by 2.9 seconds
+      ease: "power3.out", // Use a power3 easing function
     })
     .from(
-      "#card--design",
+      "#card-design",
       {
         transformOrigin: "center",
         rotateX: 360,
         duration: 1.5,
         opacity: 0,
         yPercent: 100,
-        ease: "back.out",
+        ease: "back.out", // Use a back-out easing function
       },
-      "<+=0.5"
+      "<+=0.5" // Start the animation 0.5 seconds after the previous one
     )
     .from(
-      "#card--development",
+      "#card-development",
       {
         transformOrigin: "center",
         rotateX: 360,
         duration: 1.25,
         opacity: 0,
         yPercent: 100,
-        ease: "back.out",
+        ease: "back.out", // Use a back-out easing function
       },
-      "<+=0.25"
+      "<+=0.25" // Start the animation 0.25 seconds after the previous one
     );
-  // HERE STARTS SCROLL paralax animation for home elements
 
-  const homeContainer = document.querySelector(".home__container");
+  // PARALLAX ANIMATION FOR THE HOME SECTION
+  const homeContainer = document.querySelector(".home-container");
   const homeSection = document.querySelector(".home");
 
   gsap.to(homeContainer, {
     duration: 3.25,
     yPercent: -100,
-    // opacity: 0,
-    ease: "powe3.out",
+    ease: "powe3.out", // Use a power3 easing function
     scrollTrigger: {
       trigger: homeSection,
-      start: "60% 20%",
-      // end: "bottom top",
-      end: () => "+=" + homeSection.offsetHeight,
-      scrub: true,
+      start: "60% 20%", // Start the animation when the trigger element is 60% in view from the top and 20% from the left
+      end: () => "+=" + homeSection.offsetHeight, // End the animation when the trigger element height is reached
+      scrub: true, // Enable scrubbing for smooth animation
     },
   });
 }

@@ -2,7 +2,7 @@ import * as THREE from "three";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-export const ballBgCanvas = () => {
+export const ballBg = () => {
   // Register GSAP ScrollTrigger plugin
   gsap.registerPlugin(ScrollTrigger);
 
@@ -51,7 +51,7 @@ export const ballBgCanvas = () => {
   const mesh = new THREE.Mesh(geometry, material);
   // Check if screen width is below 650px
   if (window.innerWidth < 650) {
-    mesh.scale.set(0.8, 0.8, 0.8);
+    mesh.scale.set(0.7, 0.7, 0.7);
   } else {
     mesh.scale.set(1.15, 1.15, 1.15); // Scale the mesh
   }
@@ -79,6 +79,15 @@ export const ballBgCanvas = () => {
     start: "top top",
     end: () => "+=" + body.offsetHeight * 1.25,
     onUpdate: handleScroll,
+  });
+
+  // GSAP Reveal animation for the canvas
+  const canva = document.querySelectorAll("#myThreeJsCanvas");
+  gsap.from(canva, {
+    duration: 2,
+    opacity: 0,
+    delay: 2.9,
+    ease: "back.out",
   });
 
   function handleScroll(self) {

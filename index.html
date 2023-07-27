@@ -40,22 +40,22 @@
           <li
             class="nav-link text-tertiary hover:text-primary text-[18px] font-medium cursor-pointer font-body"
           >
-            <a href="#home" class="font-body nav__link">Home</a>
+            <a href="#home" class="font-body">Home</a>
           </li>
           <li
             class="nav-link text-tertiary hover:text-primary text-[18px] font-medium cursor-pointer font-body"
           >
-            <a href="#about" class="font-body nav__link">About</a>
+            <a href="#about" class="font-body">About</a>
           </li>
           <li
             class="nav-link text-tertiary hover:text-primary text-[18px] font-medium cursor-pointer font-body"
           >
-            <a href="#projects" class="font-body nav__link">Works</a>
+            <a href="#projects" class="font-body">Works</a>
           </li>
           <li
             class="nav-link text-tertiary hover:text-primary text-[18px] font-medium cursor-pointer font-body"
           >
-            <a href="#contact" class="font-body nav__link">Contact</a>
+            <a href="#contact" class="font-body">Contact</a>
           </li>
         </ul>
       </div>
@@ -95,44 +95,97 @@
       </div>
     </nav>
 
-    <!-- <section class="section home grid" id="home">
-      <div class="home__container container">
-        <div class="home__data">
-          <h1 class="home__greeting section__title">I am</h1>
-          <div id="wrapper-home-name">
-            <h1 class="home__name home__name-change">Jabid Jimenez</h1>
-            <h1 class="home__name home__name-dev home__name-change">
-              Web Developer
-            </h1>
-            <h1 class="home__name home__name-change">Web Designer</h1>
-          </div>
+    <section class="home w-full h-screen mx-auto" id="home">
+      <div
+        class="home-container lg:px-15 sm:px-20 xs:py-[120px] sm:py-[130px] py-32 lg:flex lg:flex-row xs:flex xs:flex-col xs:gap-11 xs:items-center lg:items-center lg:justify-around"
+      >
+        <div
+          class="home-left-col flex flex-col text-center lg:text-start font-title"
+        >
+          <h1
+            class="font-medium lg:text-[60px] md:text-[46px] sm:text-[36px] xs:text-[25px] text-tertiary font-greeting lg:mb-[100px] sm:mb-[60px] md:mb-[80px] mb-[50px] greeting z-0"
+          >
+            I am
+          </h1>
 
-          <div class="home__social">
-            <a href="#" class="home__social-link">
-              <i class="ri-linkedin-box-line"></i>
-            </a>
-            <a href="#" class="home__social-link">
-              <i class="ri-github-line"></i>
-            </a>
-            <a href="#" class="home__social-link">
-              <i class="ri-whatsapp-line"></i>
-            </a>
+          <h1
+            class="z-10 hero-title md:text-[150px] tablet:text-[125px] sm:text-[85px] xs:text-[70px] text-primary font-title m-0 leading-0"
+          >
+            Jabid Jimenez
+          </h1>
+          <h1
+            class="z-10 hero-title md:text-[150px] tablet:text-[125px] sm:text-[85px] xs:text-[70px] text-primary font-title m-0 leading-0"
+          >
+            Web Designer
+          </h1>
+          <h1
+            class="z-10 hero-title md:text-[150px] tablet:text-[125px] sm:text-[85px] xs:text-[70px] text-primary font-title m-0 leading-0"
+          >
+            Web Developer
+          </h1>
+
+          <div
+            class="flex justify-center lg:justify-start md:mt-[100px] sm:mt-[60px] mt-[50px]"
+          >
+            <ul class="list-none flex items-center gap-16 z-0">
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/jabid-jimenez-serrano-960215175/"
+                  target="_blank"
+                  class="text-tertiary font-medium md:text-[30px] xs:text-[25px] text-[15px]"
+                >
+                  <i class="ri-linkedin-box-line"></i>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/jimjabid"
+                  target="_blank"
+                  class="text-tertiary font-medium md:text-[30px] xs:text-[25px] text-[15px]"
+                >
+                  <i class="ri-github-line"></i>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/5491166372967"
+                  target="_blank"
+                  class="text-tertiary font-medium md:text-[30px] xs:text-[25px] text-[15px]"
+                >
+                  <i class="ri-whatsapp-line"></i>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div class="home__img-container">
-          <div class="home__cards" id="card--design">
-            <i class="ri-pencil-ruler-2-line"></i>
-            <p>Web Design</p>
+        <div
+          class="flex flex-col justify-center items-center img-container bg-body-color md:mt-[50px] sm:mt-[30px] mt-[25px] sm:w-[450px] sm:h-[500px] xs:w-[370px] xs:h-[450px]"
+        >
+          <div class="home-cards bg-secondary" id="card-design">
+            <i
+              class="ri-pencil-ruler-2-line text-primary font-medium md:text-[30px] xs:text-[25px] text-[15px]"
+            ></i>
+            <p
+              class="text-primary sm:text-[18px] text-[15px] font-medium font-body"
+            >
+              Web Design
+            </p>
           </div>
-       
-          <div class="home__cards" id="card--development">
-            <i class="ri-code-box-line"></i>
-            <p>Web Development</p>
+
+          <div class="home-cards bg-secondary" id="card-development">
+            <i
+              class="ri-code-box-line text-primary font-medium md:text-[30px] xs:text-[25px] text-[15px]"
+            ></i>
+            <p
+              class="text-primary sm:text-[18px] text-[15px] font-medium font-body"
+            >
+              Web Development
+            </p>
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
 
     <section class="section about grid" id="about">
       <div class="title__container about-title">

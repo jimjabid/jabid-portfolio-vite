@@ -1,8 +1,8 @@
 // import { loader } from "./src/loader.js";
 import { smoothScroll } from "./src/smoothSCroll.js";
-import { ballBgCanvas } from "./src/canvas/ballBgCanvas.js";
+import { ballBg } from "./src/canvas/ballBg.js";
 import { navBar } from "./src/navbar.js";
-//import { home } from "./src/home.js";
+import { home } from "./src/home.js";
 import { about } from "./src/about.js";
 import { projects } from "./src/projects.js";
 import { contact } from "./src/contact.js";
@@ -10,9 +10,9 @@ import { contact } from "./src/contact.js";
 function init() {
   // loader();
   smoothScroll();
-  ballBgCanvas();
+  ballBg();
   navBar();
-  //home();
+  home();
   about();
   projects();
   contact();

@@ -17,6 +17,7 @@ export default {
       screens: {
         xs: "370px",
         md: "930px",
+        tablet: "771px",
       },
       fontFamily: {
         body: ["Nunito", "serif"],

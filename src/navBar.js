@@ -1,3 +1,5 @@
+import { gsap } from "gsap";
+
 export const navBar = () => {
   /*=============== SHOW MENU ===============*/
   const navToggle = document.getElementById("nav-toggle");
@@ -23,5 +25,16 @@ export const navBar = () => {
   navLinks.forEach((link) => {
     link.addEventListener("click", hideNavMenu);
     console.log(link);
+  });
+
+  // Gsap reveal animation nav items
+  const navItem = document.querySelectorAll(".nav-link");
+  gsap.from(navItem, {
+    duration: 2,
+    yPercent: -100,
+    opacity: 0,
+    delay: 2.9,
+    stagger: 0.2,
+    ease: "back.out",
   });
 };

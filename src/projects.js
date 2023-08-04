@@ -7,7 +7,7 @@ export function projects() {
   // HERE STARTS THE REVEAL ANIMATION FOR PROJECT´S SECTION
 
   const projectsTitleContainer = document.querySelector(
-    ".projects > .title__container"
+    ".projects > .title-container"
   );
   const projectTitle = document.querySelectorAll(" .project-title");
 
@@ -25,8 +25,8 @@ export function projects() {
     },
   });
 
-  const sliderItem = document.querySelectorAll(".slider__item");
-  const projectContainer = document.querySelector(".projects__container");
+  const sliderItem = document.querySelectorAll(".slider-item");
+  const projectContainer = document.querySelector(".projects-container");
 
   gsap.from(sliderItem, {
     duration: 3.5,
@@ -42,13 +42,13 @@ export function projects() {
   });
 
   // HERE STARTS THE ANIMATION FOR THE PROJECT´S SLIDER
-  const projectsContent = document.querySelectorAll(".slider__img_wrapper");
-  const projects = document.querySelectorAll(".project__hover");
+  const projectsContent = document.querySelectorAll(".slider-img-wrapper");
+  const projects = document.querySelectorAll(".project-hover");
 
   gsap.set(projects, { opacity: 0 });
 
   projectsContent.forEach((project) => {
-    const animation = gsap.to(project.querySelector(".project__hover"), {
+    const animation = gsap.to(project.querySelector(".project-hover"), {
       paused: true,
       opacity: 1,
       scaleY: 1,
@@ -62,11 +62,11 @@ export function projects() {
   /**
    * Gsap animations
    */
-  const items = document.querySelectorAll(".slider__item");
+  const items = document.querySelectorAll(".slider-item");
   const width = (items.length - 1) * 100;
   const section = document.querySelector(".projects");
 
-  gsap.to(".slider__item", {
+  gsap.to(".slider-item", {
     xPercent: -width,
     ease: "none",
     scrollTrigger: {
@@ -80,7 +80,7 @@ export function projects() {
   });
 
   items.forEach((item) => {
-    gsap.to(item.querySelector(".slider__img"), {
+    gsap.to(item.querySelector(".slider-img"), {
       xPercent: 50,
       scrollTrigger: {
         trigger: section,

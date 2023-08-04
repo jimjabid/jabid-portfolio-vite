@@ -5,7 +5,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function about() {
   // Here starts scroll reveal animation for the about title
-  const titleContainer = document.querySelector(".about > .title__container");
+  const titleContainer = document.querySelector(".about > .title-container");
   const aboutTitle = document.querySelectorAll(" .about-title");
 
   gsap.from(aboutTitle, {
@@ -23,9 +23,9 @@ export function about() {
   });
 
   // Here starts Scroll Reveal animation for cards within the about section
-  const aboutCards = document.querySelectorAll(".about__box");
-  const cardSkills = document.querySelectorAll("#skills--box");
-  const aboutContainer = document.querySelector(".about__container");
+  const aboutCards = document.querySelectorAll(".about-box");
+  //const cardSkills = document.querySelectorAll("#skills--box");
+  const aboutContainer = document.querySelector(".about-container");
 
   gsap.to(aboutCards, {
     duration: 2.25,
@@ -40,20 +40,20 @@ export function about() {
       scrub: true,
     },
   });
-  gsap.from(cardSkills, {
-    duration: 3.5,
-    yPercent: 100,
-    opacity: 0,
-    ease: "powe3.out",
-    scrollTrigger: {
-      trigger: aboutContainer,
-      start: "center 60%",
-      end: "top top",
-      // end: () => "-=" + aboutContainer.offsetHeight,
-      scrub: true,
-      // markers: true,
-    },
-  });
+  // gsap.from(cardSkills, {
+  //   duration: 3.5,
+  //   yPercent: 100,
+  //   opacity: 0,
+  //   ease: "powe3.out",
+  //   scrollTrigger: {
+  //     trigger: aboutContainer,
+  //     start: "center 60%",
+  //     end: "top top",
+  //     // end: () => "-=" + aboutContainer.offsetHeight,
+  //     scrub: true,
+  //     // markers: true,
+  //   },
+  // });
 
   // HERE STARTS SCROLL paralax animation for about elements
 

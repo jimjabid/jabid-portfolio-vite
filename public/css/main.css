@@ -9,7 +9,7 @@
   --body-color: #0a151f;
   --first-color: hsl(208, 80%, 82%);
   --first-color-0: hsl(208, 80%, 82%);
-  --second-color: #224b6da6;
+  --second-color: hsla(207, 52%, 28%, 0.651);
   --second-color-1: #224b6d;
   --text-color: #f0f5fa;
 
@@ -213,7 +213,7 @@ i {
 }
 
 .block {
-  background: hsl(207, 52%, 28%);
+  background: #224b6d;
   position: fixed;
   width: 100vw;
   height: 50%;

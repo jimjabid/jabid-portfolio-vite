@@ -5,7 +5,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function contact() {
   // Here starts animation for the contact title
-  const titleContainer = document.querySelector(".contact > .title__container");
+  const titleContainer = document.querySelector(".contact > .title-container");
   const contactTitle = document.querySelectorAll(" .contact-title");
 
   gsap.from(contactTitle, {
@@ -24,7 +24,7 @@ export function contact() {
 
   // Here starts animation for the contact content
 
-  const contactContainer = document.querySelector(".contact__container");
+  const contactContainer = document.querySelector(".contact-container");
   const contactContainerChilds =
     contactContainer.querySelectorAll(":scope > *");
 

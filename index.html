@@ -14,16 +14,24 @@
   </head>
   <body class="grid__body relative z-0 bg-body-color" id="body">
     <div id="myThreeJsCanvas" class="fixed top-0 bottom-0 left-0 right-0"></div>
-    <!-- <div class="blocks">
-      <div class="block block-top">
-        <h1 class="loading__text section__title">WELCOME</h1>
+    <div class="blocks w-screen h-screen absolute">
+      <div
+        class="bg-nav-bg fixed w-screen h-1/2 grid items-end justify-center z-50 block-top top-0"
+      >
+        <h1
+          class="md:text-[110px] sm:text-[90px] xs:text-[70px] text-[30px] font-title text-primary loading-text tracking-[30px] text-center col-[initial] pointer-events-none translate-y-[100%]"
+        >
+          WELCOME
+        </h1>
       </div>
-      <div class="block block-bottom">
-        <div class="loader__wrapper">
-          <div class="loader"></div>
+      <div
+        class="bg-nav-bg fixed w-screen h-1/2 grid items-start justify-center z-50 block-bottom bottom-0"
+      >
+        <div class="relative w-[400px] h-[2px] border-0 bg-primary">
+          <div class="loader absolute w-0 h-full bg-body-color"></div>
         </div>
       </div>
-    </div> -->
+    </div>
 
     <nav class="sm:px-24 px-16 w-full flex items-center py-10 fixed top-0 z-20">
       <img
@@ -293,156 +301,251 @@
         </h1>
       </div>
 
-      <div class="projects-container container">
-        <div class="sticky__wrapper">
-          <div class="slider__wrapper">
-            <ul class="slider">
-              <li class="slider-item">
-                <div class="slider-img-wrapper">
-                  <div class="project-hover">
-                    <h1 class="project__title">Portfolio</h1>
-                    <p class="project__description">Design and Development</p>
-                    <div class="project__buttons">
-                      <a href="#" class="project__button">
-                        Visit site
-                        <i class="ri-arrow-right-line articles__icon"></i>
-                      </a>
-                      <a href="#" class="project__button">
-                        Visit figma
-                        <i class="ri-arrow-right-line articles__icon"></i>
-                      </a>
-                    </div>
-                  </div>
-                  <img
-                    src="https://picsum.photos/id/5/700
-                    "
-                    alt="slider--image"
-                    class="slider-img"
-                  />
+      <div
+        class="projects-container lg:mt-[300px] mt-56 flex flex-wrap gap-5 justify-center items-center overflow-hidden pl-[100%] sticky"
+      >
+        <ul class="flex">
+          <li class="slider-item w-[25rem] h-[28rem] py-0 px-[1rem]">
+            <div class="slider-content w-full h-full relative overflow-hidden">
+              <div
+                class="absolute w-full h-full p-5 bg-secondary flex justify-center items-center flex-col inset-0 top-0 left-0 z-10 scale-y-0 show-project origin-top-left"
+              >
+                <h1
+                  class="text-primary sm:text-[30px] text-center tracking-[1.5px]"
+                >
+                  Portfolio
+                </h1>
+                <p
+                  class="font-body md:text-[20.8px] text-center p-5 text-tertiary"
+                >
+                  Design and Development
+                </p>
+                <div class="flex flex-col justify-center items-center gap-5">
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="project__button text-tertiary"
+                  >
+                    Visit site
+                    <i class="ri-arrow-right-line articles__icon"></i>
+                  </a>
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="project__button text-tertiary"
+                  >
+                    Visit figma
+                    <i class="ri-arrow-right-line articles__icon"></i>
+                  </a>
                 </div>
-              </li>
-              <li class="slider-item">
-                <div class="slider-img-wrapper">
-                  <div class="project-hover">
-                    <h1 class="project__title">Portfolio</h1>
-                    <p class="project__description">Design and Development</p>
-                    <div class="project__buttons">
-                      <a href="#" class="project__button">
-                        Visit site
-                        <i class="ri-arrow-right-line articles__icon"></i>
-                      </a>
-                      <a href="#" class="project__button">
-                        Visit figma
-                        <i class="ri-arrow-right-line articles__icon"></i>
-                      </a>
-                    </div>
-                  </div>
-                  <img
-                    src="https://picsum.photos/id/0/700
+              </div>
+              <img
+                src="https://picsum.photos/id/5/700
                     "
-                    alt="slider--image"
-                    class="slider-img"
-                  />
+                alt="slider--image"
+                class="slider-img w-[200%] h-full bg-cover absolute inset-0 top-0 right-0 max-w-none"
+              />
+            </div>
+          </li>
+          <li class="slider-item w-[25rem] h-[28rem] py-0 px-[1rem]">
+            <div class="slider-content w-full h-full relative overflow-hidden">
+              <div
+                class="absolute w-full h-full p-5 bg-secondary flex justify-center items-center flex-col inset-0 top-0 left-0 z-10 scale-y-0 show-project origin-top-left"
+              >
+                <h1
+                  class="text-primary sm:text-[30px] text-center tracking-[1.5px]"
+                >
+                  Portfolio
+                </h1>
+                <p
+                  class="font-body md:text-[20.8px] text-center p-5 text-tertiary"
+                >
+                  Design and Development
+                </p>
+                <div class="flex flex-col justify-center items-center gap-5">
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="project__button text-tertiary"
+                  >
+                    Visit site
+                    <i class="ri-arrow-right-line articles__icon"></i>
+                  </a>
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="project__button text-tertiary"
+                  >
+                    Visit figma
+                    <i class="ri-arrow-right-line articles__icon"></i>
+                  </a>
                 </div>
-              </li>
-              <li class="slider-item">
-                <div class="slider-img-wrapper">
-                  <div class="project-hover">
-                    <h1 class="project__title">Portfolio</h1>
-                    <p class="project__description">Design and Development</p>
-                    <div class="project__buttons">
-                      <a href="#" class="project__button">
-                        Visit site
-                        <i class="ri-arrow-right-line articles__icon"></i>
-                      </a>
-                      <a href="#" class="project__button">
-                        Visit figma
-                        <i class="ri-arrow-right-line articles__icon"></i>
-                      </a>
-                    </div>
-                  </div>
-                  <img
-                    src="https://picsum.photos/id/2/700
+              </div>
+              <img
+                src="https://picsum.photos/id/0/700
                     "
-                    alt="slider--image"
-                    class="slider-img"
-                  />
+                alt="slider--image"
+                class="slider-img w-[200%] h-full bg-cover absolute inset-0 top-0 right-0 max-w-none"
+              />
+            </div>
+          </li>
+          <li class="slider-item w-[25rem] h-[28rem] py-0 px-[1rem]">
+            <div class="slider-content w-full h-full relative overflow-hidden">
+              <div
+                class="absolute w-full h-full p-5 bg-secondary flex justify-center items-center flex-col inset-0 top-0 left-0 z-10 scale-y-0 show-project origin-top-left"
+              >
+                <h1
+                  class="text-primary sm:text-[30px] text-center tracking-[1.5px]"
+                >
+                  Portfolio
+                </h1>
+                <p
+                  class="font-body md:text-[20.8px] text-center p-5 text-tertiary"
+                >
+                  Design and Development
+                </p>
+                <div class="flex flex-col justify-center items-center gap-5">
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="project__button text-tertiary"
+                  >
+                    Visit site
+                    <i class="ri-arrow-right-line articles__icon"></i>
+                  </a>
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="project__button text-tertiary"
+                  >
+                    Visit figma
+                    <i class="ri-arrow-right-line articles__icon"></i>
+                  </a>
                 </div>
-              </li>
-              <li class="slider-item">
-                <div class="slider-img-wrapper">
-                  <div class="project-hover">
-                    <h1 class="project__title">Portfolio</h1>
-                    <p class="project__description">Design and Development</p>
-                    <div class="project__buttons">
-                      <a href="#" class="project__button">
-                        Visit site
-                        <i class="ri-arrow-right-line articles__icon"></i>
-                      </a>
-                      <a href="#" class="project__button">
-                        Visit figma
-                        <i class="ri-arrow-right-line articles__icon"></i>
-                      </a>
-                    </div>
-                  </div>
-                  <img
-                    src="https://picsum.photos/id/3/700
+              </div>
+              <img
+                src="https://picsum.photos/id/2/700
                     "
-                    alt="slider--image"
-                    class="slider-img"
-                  />
+                alt="slider--image"
+                class="slider-img w-[200%] h-full bg-cover absolute inset-0 top-0 right-0 max-w-none"
+              />
+            </div>
+          </li>
+          <li class="slider-item w-[25rem] h-[28rem] py-0 px-[1rem]">
+            <div class="slider-content w-full h-full relative overflow-hidden">
+              <div
+                class="absolute w-full h-full p-5 bg-secondary flex justify-center items-center flex-col inset-0 top-0 left-0 z-10 scale-y-0 show-project origin-top-left"
+              >
+                <h1
+                  class="text-primary sm:text-[30px] text-center tracking-[1.5px]"
+                >
+                  Portfolio
+                </h1>
+                <p
+                  class="font-body md:text-[20.8px] text-center p-5 text-tertiary"
+                >
+                  Design and Development
+                </p>
+                <div class="flex flex-col justify-center items-center gap-5">
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="project__button text-tertiary"
+                  >
+                    Visit site
+                    <i class="ri-arrow-right-line articles__icon"></i>
+                  </a>
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="project__button text-tertiary"
+                  >
+                    Visit figma
+                    <i class="ri-arrow-right-line articles__icon"></i>
+                  </a>
                 </div>
-              </li>
-            </ul>
-          </div>
-        </div>
+              </div>
+              <img
+                src="https://picsum.photos/id/3/700
+                    "
+                alt="slider--image"
+                class="slider-img w-[200%] h-full bg-cover absolute inset-0 top-0 right-0 max-w-none"
+              />
+            </div>
+          </li>
+        </ul>
       </div>
     </section>
-    <section class="section contact grid" id="contact">
-      <div class="title__container contact-title">
-        <h1 class="section__title contact-title">Contact</h1>
-      </div>
-      <div class="contact__container container">
-        <div class="contact__wrapper">
-          <h2 class="contact__subtitle">Send Me a Message</h2>
-          <div class="contact__link-wrapper">
-            <a
-              href="mailto:jabidandresjimenezserrano@gmail.com"
-              class="contact__link"
-              >hello@jabidjim.com</a
-            >
-          </div>
-        </div>
-        <div class="contact__wrapper">
-          <h2 class="contact__subtitle">OR</h2>
-          <h2 class="contact__subtitle">Connect with me on social</h2>
-
-          <div class="contact__social-links-wrapper">
-            <div class="contact__link-wrapper">
-              <a href="#" class="contact__link">GITHUB</a>
-            </div>
-            <div class="contact__link-wrapper">
-              <a href="#" class="contact__link">LINKEDIN</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <footer>
-        <h3 class="footer">Designed and developed by:</h3>
-        <svg
-          width="96"
-          height="65"
-          viewBox="0 0 96 65"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+    <section
+      class="contact sm:px-20 lg:px-1 lg:py-16 sm:pt-[250px] xs:py-[40px] py-16"
+      id="contact"
+    >
+      <div
+        class="title-container contact-title title-container project-title xs:w-1/2 lg:w-1/3 flex justify-end px-8 rounded-r-[20px] shadow-card bg-secondary absolute left-0 lg:-left-[10%]"
+      >
+        <h1
+          class="contact-title about-title font-title md:text-[110px] sm:text-[90px] xs:text-[70px] text-[30px] tracking-[1.5px] text-primary project-title"
         >
-          <path
-            d="M9.03525 32.7237C22.6543 39.7152 42.7629 13.5098 42.1296 8.19004C41.4486 2.46975 37.0906 21.4103 34.2306 31.3254C31.3706 41.2406 24.2886 57.6388 20.3391 60.9438C10.7679 68.9533 5.22191 59.2913 10.6696 53.9524C14.4101 50.2865 33.0225 39.2171 42.1296 32.7237C58.6087 20.9742 61.6049 2.0884 57.3695 8.82563C55.7472 11.4062 55.4763 22.9357 53.161 29.6729C50.8458 36.4101 47.441 60.3082 41.1763 62.9777C32.8756 66.5147 26.6971 59.779 31.6429 57.1303C39.9505 52.6812 107.774 4.63073 82.442 2.08837C57.1106 -0.453976 47.441 1.32565 62.2858 8.8256C65.3182 10.3576 106.548 22.0458 91.8392 31.3254C80.0723 38.7491 26.3769 36.7068 1 34.7576"
-            stroke="white"
-            stroke-width="2"
-          />
-        </svg>
-      </footer>
+          Contact
+        </h1>
+      </div>
+      <div
+        class="contact-container lg:mt-[300px] mt-56 flex gap-5 justify-center items-center"
+      >
+        <div class="flex flex-col justify-center items-center gap-[4rem] z-10">
+          <div class="flex flex-col items-center">
+            <h2
+              class="text-primary font-medium lg:text-[60px] md:text-[46px] sm:text-[36px] xs:text-[25px]"
+            >
+              Send Me a Message
+            </h2>
+            <div
+              class="w-max h-max text-center px-[1rem] py-[0.25rem] bg-secondary shadow-contact rounded"
+            >
+              <a
+                href="mailto:jabidandresjimenezserrano@gmail.com"
+                class="text-tertiary font-body sm:text-[30px] text-center tracking-[1.5px]"
+                >hello@jabidjim.com</a
+              >
+            </div>
+          </div>
+          <div class="flex flex-col items-center">
+            <h2
+              class="text-primary font-medium lg:text-[60px] md:text-[46px] sm:text-[36px] xs:text-[25px]"
+            >
+              OR
+            </h2>
+            <h2
+              class="text-primary font-medium lg:text-[60px] md:text-[46px] sm:text-[36px] xs:text-[25px]"
+            >
+              Connect with me on social
+            </h2>
+
+            <div class="flex gap-x-20">
+              <div
+                class="w-max flex h-max text-center px-[1rem] py-[0.25rem] bg-secondary shadow-contact rounded"
+              >
+                <a
+                  href="#"
+                  target="_blank"
+                  class="text-tertiary font-body sm:text-[30px] text-center tracking-[1.5px]"
+                  >GITHUB</a
+                >
+              </div>
+              <div
+                class="w-max flex gap-y-20 h-max text-center px-[1rem] py-[0.25rem] bg-secondary shadow-contact rounded"
+              >
+                <a
+                  href="#"
+                  target="_blank"
+                  class="text-tertiary font-body sm:text-[30px] text-center tracking-[1.5px]"
+                  >LINKEDIN</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- ===================== Main js ===================== -->

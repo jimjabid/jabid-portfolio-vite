@@ -87,7 +87,7 @@ class BallAbout {
 
     // Create a MeshPhysicalMaterial for the Icosahedron
 
-    this.material = new THREE.MeshStandardMaterial({
+    this.material = new THREE.MeshPhysicalMaterial({
       color: 0x224b6d,
       roughness: 0,
       metalness: 0.2,

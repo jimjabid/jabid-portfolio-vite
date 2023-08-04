@@ -21,7 +21,7 @@ export default class BallBackground {
     this.container.appendChild(this.renderer.domElement);
 
     this.camera = new THREE.PerspectiveCamera(
-      50,
+      65,
       this.width / this.height,
       1,
       1000
@@ -105,7 +105,7 @@ export default class BallBackground {
   // Add ambient and spot lights to the scene
   addLights() {
     let ambientLight = new THREE.AmbientLight(0xcccccc, 2.5);
-    let spotLight = new THREE.SpotLight(0xffffff, 10, 1000);
+    let spotLight = new THREE.SpotLight(0xffffff, 2, 1000);
     spotLight.position.set(-1, 0.5, 1);
     this.scene.add(ambientLight, spotLight);
   }

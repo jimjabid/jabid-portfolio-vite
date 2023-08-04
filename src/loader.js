@@ -5,7 +5,7 @@ gsap.registerPlugin(ScrollTrigger);
 export function loader() {
   const loaderTimeline = gsap
     .timeline()
-    .to(".loading__text", {
+    .to(".loading-text", {
       yPercent: -100,
       duration: 0.8,
       ease: "power3.out",
@@ -29,7 +29,7 @@ export function loader() {
       ">+=0.1"
     )
     .to(
-      ".loading__text",
+      ".loading-text",
       {
         opacity: 0,
         yPercent: -400,

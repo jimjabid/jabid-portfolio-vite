@@ -42,13 +42,13 @@ export function projects() {
   });
 
   // HERE STARTS THE ANIMATION FOR THE PROJECT´S SLIDER
-  const projectsContent = document.querySelectorAll(".slider-img-wrapper");
-  const projects = document.querySelectorAll(".project-hover");
+  const projectsContent = document.querySelectorAll(".slider-content");
+  const projects = document.querySelectorAll(".show-project");
 
   gsap.set(projects, { opacity: 0 });
 
   projectsContent.forEach((project) => {
-    const animation = gsap.to(project.querySelector(".project-hover"), {
+    const animation = gsap.to(project.querySelector(".show-project"), {
       paused: true,
       opacity: 1,
       scaleY: 1,
@@ -71,7 +71,7 @@ export function projects() {
     ease: "none",
     scrollTrigger: {
       trigger: section,
-      start: "top top",
+      start: "20% top",
       end: () => "+=" + section.offsetWidth,
       scrub: true,
       pin: true,
@@ -81,7 +81,7 @@ export function projects() {
 
   items.forEach((item) => {
     gsap.to(item.querySelector(".slider-img"), {
-      xPercent: 50,
+      xPercent: -50,
       scrollTrigger: {
         trigger: section,
         start: "top top",

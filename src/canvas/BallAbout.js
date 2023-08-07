@@ -1,4 +1,6 @@
 import * as THREE from "three";
+import vertex from "./shaders/vertexTech.glsl";
+import fragment from "./shaders/fragmentTech.glsl";
 import figma from "/img/figma.png?url";
 import git from "/img/git.png?url";
 import github from "/img/github.png?url";
@@ -56,16 +58,6 @@ class BallAbout {
     this.resize();
     this.render();
     this.setupResize();
-    //this.setUpSettings();
-  }
-
-  setUpSettings() {
-    this.settings = {
-      progress: 0,
-    };
-
-    this.gui = new GUI();
-    this.gui.add(this.settings, "progress", 0, 1, 0.01);
   }
 
   setupResize() {
@@ -89,26 +81,15 @@ class BallAbout {
 
     this.material = new THREE.MeshPhysicalMaterial({
       color: 0x224b6d,
-      roughness: 0,
-      metalness: 0.2,
+      roughness: 1,
+      metalness: 0.9,
 
-      clearcoat: 1,
-      clearcoatRoughness: 0.4,
+      clearcoat: 0,
+      clearcoatRoughness: 0,
       flatShading: true,
 
       side: THREE.DoubleSide,
     });
-    // this.material = new THREE.MeshPhysicalMaterial({
-    //   color: 0x224b6d,
-    //   roughness: 1,
-    //   //metalness: 0,
-
-    //   clearcoat: 0,
-    //   clearcoatRoughness: 0,
-    //   flatShading: true,
-
-    //   side: THREE.DoubleSide,
-    // });
 
     // Create a Mesh using the geometry and material
     this.mesh = new THREE.Mesh(this.geometry, this.material);
@@ -121,26 +102,24 @@ class BallAbout {
     // Add the mesh to the scene
     this.scene.add(this.mesh);
 
+    //Add Textures to be used on the decal material
+    const textureLoader = new THREE.TextureLoader();
+    const texture = textureLoader.load(imageURL);
+
     // Create a DecalMaterial with the provided image URL
-    const decalMaterial = new THREE.MeshPhongMaterial({
-      map: new THREE.TextureLoader().load(imageURL),
+    const decalMaterial = new THREE.ShaderMaterial({
+      uniforms: {
+        uTexture: { value: texture },
+        transparent: true,
+      },
       transparent: true,
-      //saturation: 1,
-      //depthTest: true,
-      //depthWrite: false,
+      vertexShader: vertex,
+      fragmentShader: fragment,
+
       polygonOffset: true,
-      polygonOffsetFactor: -4,
-      flatShading: true,
+      polygonOffsetFactor: -1,
+      polygonOffsetUnits: 0,
     });
-    // const decalMaterial = new THREE.MeshPhysicalMaterial({
-    //   map: new THREE.TextureLoader().load(imageURL),
-    //   transparent: true,
-    //   //depthTest: true,
-    //   //depthWrite: false,
-    //   polygonOffset: true,
-    //   polygonOffsetFactor: -4,
-    //   flatShading: true,
-    // });
 
     // Set position, orientation, and size for the DecalGeometry
     const position = new THREE.Vector3(0, 0, 0.1);
@@ -163,8 +142,8 @@ class BallAbout {
   // Add ambient and spot lights to the scene
   addLights() {
     let ambientLight = new THREE.AmbientLight(0xcccccc, 1);
-    let directionalLight = new THREE.PointLight(0xffffff, 1.5);
-    directionalLight.position.set(0, 20, 10);
+    let directionalLight = new THREE.DirectionalLight(0xffffff, 5);
+    directionalLight.position.set(200, 200, 200);
 
     this.scene.add(ambientLight, directionalLight);
   }
@@ -185,7 +164,7 @@ class BallAbout {
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     this.controls.enableZoom = false;
     this.controls.enableDamping = true;
-    //this.controls.autoRotate = true;
+
     this.controls.update();
   }
   // Render loop for animation

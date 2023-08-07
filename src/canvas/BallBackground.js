@@ -32,16 +32,6 @@ export default class BallBackground {
     this.camera.updateProjectionMatrix();
 
     this.clock = new THREE.Clock();
-    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-    // this.controls.minPolarAngle = 0;
-    //this.controls.maxPolarAngle = 0;
-    // this.controls.minAzimuthAngle = 0;
-    // this.controls.maxAzimuthAngle = 0;
-    this.controls.enableZoom = false;
-    this.controls.enableDamping = false;
-    this.controls.autoRotate = true;
-    this.controls.autoRotateSpeed = -0.5;
-    this.controls.update();
 
     this.isPlaying = true;
 
@@ -50,21 +40,9 @@ export default class BallBackground {
     this.addLights();
     this.render();
     this.setupResize();
-    //this.setUpSettings();
-
     // Handle scroll animation using GSAP ScrollTrigger
     this.handleScrollAnimation();
   }
-
-  // setUpSettings() {
-  //   this.settings = {
-  //     progress: 0,
-  //   };
-
-  //   this.gui = new GUI();
-  //   this.gui.add(this.settings, "progress", 0, 1, 0.01);
-  // }
-  // Add the 3D mesh to the scene
 
   setupResize() {
     window.addEventListener("resize", this.resize.bind(this));
@@ -104,7 +82,7 @@ export default class BallBackground {
 
   // Add ambient and spot lights to the scene
   addLights() {
-    let ambientLight = new THREE.AmbientLight(0xcccccc, 2.5);
+    let ambientLight = new THREE.AmbientLight(0xcccccc, 1.5);
     let spotLight = new THREE.SpotLight(0xffffff, 2, 1000);
     spotLight.position.set(-1, 0.5, 1);
     this.scene.add(ambientLight, spotLight);
@@ -125,18 +103,13 @@ export default class BallBackground {
   render() {
     if (!this.isPlaying) return;
     const time = this.clock.getElapsedTime();
+    this.mesh.rotation.y -= 0.0005;
     this.mesh.position.y = Math.cos(time) * 0.01;
     this.mesh.position.z = Math.cos(time) * 0.01;
-    this.controls.update();
+
     this.renderer.render(this.scene, this.camera);
     window.requestAnimationFrame(this.render.bind(this));
   }
-  // render() {
-  //   this.time++;
-  //   this.mesh.rotation.y -= 0.0005;
-  //   this.renderer.render(this.scene, this.camera);
-  //   window.requestAnimationFrame(this.render.bind(this));
-  // }
 
   // Handle scroll animation with GSAP ScrollTrigger
   handleScrollAnimation() {

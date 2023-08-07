@@ -1,4 +1,4 @@
-import { loader } from "./src/loader.js";
+//import { loader } from "./src/loader.js";
 import { smoothScroll } from "./src/smoothSCroll.js";
 import BallBackground from "./src/canvas/BallBackground.js";
 import { navBar } from "./src/navbar.js";
@@ -9,15 +9,15 @@ import { projects } from "./src/projects.js";
 import { contact } from "./src/contact.js";
 
 function init() {
-  loader();
-  smoothScroll();
+  // loader();
+  // smoothScroll();
   new BallBackground({ dom: document.querySelector("#myThreeJsCanvas") });
   BallAboutInstance();
   navBar();
-  home();
-  about();
-  projects();
-  contact();
+  // home();
+  // about();
+  //projects();
+  //contact();
 }
 
 init();

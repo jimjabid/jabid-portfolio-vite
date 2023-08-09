@@ -45,6 +45,7 @@ class BallAbout {
 
     this.camera.position.set(-0.3, -0.1, 3);
     this.camera.zoom = 1.2;
+    //this.camera.zoom = 1;
     this.camera.updateProjectionMatrix();
 
     // Create a clock to measure time and set initial state for animation

@@ -212,6 +212,10 @@ i {
   position: absolute;
 }
 
+#tech {
+  border: 2px solid red;
+}
+
 .block {
   background: #224b6d;
   position: fixed;

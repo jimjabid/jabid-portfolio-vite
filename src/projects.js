@@ -10,6 +10,18 @@ export function projects() {
     ".projects > .title-container"
   );
   const projectTitle = document.querySelectorAll(" .project-title");
+  const sliderItem = document.querySelectorAll(".slider-item");
+  const projectContainer = document.querySelector(".projects-container");
+  const projectsContent = document.querySelectorAll(".slider-content");
+  const projects = document.querySelectorAll(".show-project");
+  const items = document.querySelectorAll(".slider-item");
+  const width = (items.length - 1) * 120;
+  console.log(items);
+  console.log(width);
+  const section = document.querySelector(".projects");
+
+  let mm = gsap.matchMedia(section);
+  let breakPoint = 780;
 
   gsap.from(projectTitle, {
     duration: 3.5,
@@ -25,9 +37,6 @@ export function projects() {
     },
   });
 
-  const sliderItem = document.querySelectorAll(".slider-item");
-  const projectContainer = document.querySelector(".projects-container");
-
   gsap.from(sliderItem, {
     duration: 3.5,
     opacity: 0,
@@ -42,8 +51,6 @@ export function projects() {
   });
 
   // HERE STARTS THE ANIMATION FOR THE PROJECT´S SLIDER
-  const projectsContent = document.querySelectorAll(".slider-content");
-  const projects = document.querySelectorAll(".show-project");
 
   gsap.set(projects, { opacity: 0 });
 
@@ -62,34 +69,66 @@ export function projects() {
   /**
    * Gsap animations
    */
-  const items = document.querySelectorAll(".slider-item");
-  const width = (items.length - 1) * 100;
-  const section = document.querySelector(".projects");
 
-  gsap.to(".slider-item", {
-    xPercent: -width,
-    ease: "none",
-    scrollTrigger: {
-      trigger: section,
-      start: "20% top",
-      end: () => "+=" + section.offsetWidth,
-      scrub: true,
-      pin: true,
-      anticipatePin: 1,
+  mm.add(
+    {
+      isDesktop: `(min-width: ${breakPoint}px)`,
+      isMobile: `(max-width: ${breakPoint - 1}px)`,
     },
-  });
+    (context) => {
+      let { isDesktop, isMobile } = context.conditions;
 
-  items.forEach((item) => {
-    gsap.to(item.querySelector(".slider-img"), {
-      xPercent: -50,
-      scrollTrigger: {
-        trigger: section,
-        start: "top top",
-        end: () => "+=" + section.offsetWidth,
-        scrub: true,
-      },
-    });
-  });
+      let sliderTL = gsap.to(".slider-item", {
+        xPercent: -width,
+        ease: "none",
+      });
+
+      isDesktop
+        ? ScrollTrigger.create({
+            animation: sliderTL,
+            trigger: section,
+            start: "20% top",
+            end: () => "+=" + section.offsetWidth,
+            scrub: true,
+            pin: true,
+            anticipatePin: 1,
+          })
+        : ScrollTrigger.create({
+            animation: sliderTL,
+            trigger: section,
+            start: "20% top",
+            end: () => "+=" + section.offsetWidth * 2,
+            scrub: true,
+            id: "slider",
+
+            pin: true,
+            anticipatePin: 1,
+          });
+
+      items.forEach((item) => {
+        let imgTl = gsap.to(item.querySelector(".slider-img"), {
+          xPercent: -50,
+        });
+        isDesktop
+          ? ScrollTrigger.create({
+              animation: imgTl,
+              trigger: section,
+              start: "top top",
+              end: () => "+=" + section.offsetWidth,
+              scrub: true,
+            })
+          : ScrollTrigger.create({
+              animation: imgTl,
+              trigger: section,
+
+              id: "img",
+              start: "20% top",
+              end: () => "+=" + section.offsetWidth * 2,
+              scrub: true,
+            });
+      });
+    }
+  );
 
   // HERE STARTS SCROLL paralax animation for projects elements
 

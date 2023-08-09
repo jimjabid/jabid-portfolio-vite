@@ -104,8 +104,8 @@ export default class BallBackground {
     if (!this.isPlaying) return;
     const time = this.clock.getElapsedTime();
     this.mesh.rotation.y -= 0.0005;
-    this.mesh.position.y = Math.cos(time) * 0.01;
-    this.mesh.position.z = Math.cos(time) * 0.01;
+    // this.mesh.position.y = Math.cos(time) * 0.01;
+    // this.mesh.position.z = Math.cos(time) * 0.01;
 
     this.renderer.render(this.scene, this.camera);
     window.requestAnimationFrame(this.render.bind(this));

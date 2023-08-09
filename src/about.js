@@ -76,27 +76,28 @@ export function about() {
 
       let techTL = gsap.from("#tech", {
         duration: 1.5,
-
+        opacity: 0,
         yPercent: isDesktop ? 100 : 0,
         xPercent: isMobile ? -100 : 0,
         stagger: 0.1,
         ease: "powe3.out",
-        scrollTrigger: {
-          trigger: aboutSection,
-          start: "center 50%",
-          end: "+=1200px",
-          //end: () => "+=" + aboutContainer.offsetHeight,
-          scrub: true,
-          //markers: true,
-        },
+        // scrollTrigger: {
+        //   trigger: aboutSection,
+        //   start: "center 50%",
+        //   end: "+=1200px",
+        //   //end: () => "+=" + aboutContainer.offsetHeight,
+        //   scrub: true,
+        //   markers: true,
+        // },
       });
 
       isDesktop
         ? ScrollTrigger.create({
             animation: techTL,
             trigger: aboutContainer,
+
             start: "top 20%",
-            end: "bottom center",
+            end: "bottom 20%",
             //end: () => "+=" + aboutContainer.offsetHeight,
             scrub: true,
             //markers: true,

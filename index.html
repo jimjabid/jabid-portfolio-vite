@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jabid´s Portfolio</title>
+    <!-- ===================== RemixIcon ===================== -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    
+    <script type="module" crossorigin src="/jabid-portfolio-vite/assets/index-fa0beb7d.js"></script>
+    <link rel="stylesheet" href="/jabid-portfolio-vite/assets/index-46558fc8.css">
+  </head>
+  <body class="overflow-x-hidden relative z-0 bg-body-color" id="body">
+    <div id="myThreeJsCanvas" class="fixed top-0 bottom-0 left-0 right-0"></div>
+    <div class="blocks w-screen h-screen fixed z-20">
+      <div
+        class="bg-nav-bg w-screen h-1/2 grid items-end justify-center block-top top-0 overflow-hidden"
+      >
+        <h1
+          class="md:text-[110px] sm:text-[90px] xs:text-[60px] text-[30px] font-title text-primary loading-text tracking-[20px] justify-self-center col-[initial] pointer-events-none translate-y-[100%]"
+        >
+          WELCOME
+        </h1>
+      </div>
+      <div
+        class="bg-nav-bg w-screen h-1/2 grid items-start justify-center block-bottom bottom-0"
+      >
+        <div class="relative w-[400px] h-[2px] border-0 bg-primary">
+          <div class="loader absolute w-0 h-full bg-body-color"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <nav
+      class="sm:px-24 px-16 w-full flex items-center py-10 absolute left-0 right-0 top-0 z-20"
+    >
+      <img
+        id="nav-toggle"
+        src="/img/menu.svg"
+        alt="menu"
+        class="sm:hidden w-[28px] h-[28px] object-contain cursor-pointer absolute top-[2rem] right-[2rem]"
+      />
+      <div
+        class="sm:flex hidden items-center justify-end w-screen max-w-7xl mx-auto"
+      >
+        <ul class="list-none sm:flex flex-row sm:gap-20">
+          <li
+            class="nav-link text-tertiary hover:text-primary text-[18px] font-medium cursor-pointer font-body"
+          >
+            <a href="#home" class="font-body">Home</a>
+          </li>
+          <li
+            class="nav-link text-tertiary hover:text-primary text-[18px] font-medium cursor-pointer font-body"
+          >
+            <a href="#about" class="font-body">About</a>
+          </li>
+          <li
+            class="nav-link text-tertiary hover:text-primary text-[18px] font-medium cursor-pointer font-body"
+          >
+            <a href="#projects" class="font-body">Works</a>
+          </li>
+          <li
+            class="nav-link text-tertiary hover:text-primary text-[18px] font-medium cursor-pointer font-body"
+          >
+            <a href="#contact" class="font-body">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <div
+        id="nav-menu"
+        class="sm:hidden flex fixed top-0 right-0 left-0 w-screen h-screen flex-1 justify-center items-center p-6 bg-nav-bg z-10"
+      >
+        <img
+          id="nav-close"
+          src="/img/close.svg"
+          alt="menu"
+          class="nav-close w-[28px] h-[28px] cursor-pointer absolute top-[2rem] right-[2rem]"
+        />
+
+        <ul class="list-none sm:flex sm:gap-20 flex-col gap-4">
+          <li
+            class="nav-link text-tertiary hover:text-primary text-[58px] font-medium cursor-pointer font-body"
+          >
+            <a href="#home" class="font-body nav__link">Home</a>
+          </li>
+          <li
+            class="nav-link text-tertiary hover:text-primary text-[58px] font-medium cursor-pointer font-body"
+          >
+            <a href="#about" class="font-body nav__link">About</a>
+          </li>
+          <li
+            class="nav-link text-tertiary hover:text-primary text-[58px] font-medium cursor-pointer font-body"
+          >
+            <a href="#projects" class="font-body nav__link">Works</a>
+          </li>
+          <li
+            class="nav-link text-tertiary hover:text-primary text-[58px] font-medium cursor-pointer font-body"
+          >
+            <a href="#contact" class="font-body nav__link">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav> -->
+
+    <section class="home mx-auto" id="home">
+      <div
+        class="home-container lg:px-15 sm:px-20 xs:py-[120px] sm:py-[130px] py-32 lg:flex lg:flex-row xs:flex xs:flex-col xs:gap-11 xs:items-center lg:items-center lg:justify-around"
+      >
+        <div
+          class="home-left-col flex flex-col text-center lg:text-start font-title"
+        >
+          <h1
+            class="font-medium lg:text-[60px] md:text-[46px] sm:text-[36px] xs:text-[25px] text-tertiary font-greeting lg:mb-[100px] sm:mb-[60px] md:mb-[80px] mb-[50px] greeting z-0"
+          >
+            I am
+          </h1>
+
+          <h1
+            class="z-10 hero-title md:text-[150px] tablet:text-[125px] sm:text-[85px] xs:text-[70px] text-primary font-title m-0 leading-0"
+          >
+            Jabid Jimenez
+          </h1>
+          <h1
+            class="z-10 hero-title md:text-[150px] tablet:text-[125px] sm:text-[85px] xs:text-[70px] text-primary font-title m-0 leading-0"
+          >
+            Web Designer
+          </h1>
+          <h1
+            class="z-10 hero-title md:text-[150px] tablet:text-[125px] sm:text-[85px] xs:text-[70px] text-primary font-title m-0 leading-0"
+          >
+            Web Developer
+          </h1>
+
+          <div
+            class="flex justify-center lg:justify-start md:mt-[100px] sm:mt-[60px] mt-[50px]"
+          >
+            <ul class="list-none flex items-center gap-16 z-0">
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/jabid-jimenez-serrano-960215175/"
+                  target="_blank"
+                  class="text-tertiary font-medium md:text-[30px] xs:text-[25px] text-[15px]"
+                >
+                  <i class="ri-linkedin-box-line"></i>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/jimjabid"
+                  target="_blank"
+                  class="text-tertiary font-medium md:text-[30px] xs:text-[25px] text-[15px]"
+                >
+                  <i class="ri-github-line"></i>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/5491166372967"
+                  target="_blank"
+                  class="text-tertiary font-medium md:text-[30px] xs:text-[25px] text-[15px]"
+                >
+                  <i class="ri-whatsapp-line"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="flex flex-col justify-center items-center img-container bg-body-color md:mt-[50px] sm:mt-[30px] mt-[25px] sm:w-[450px] sm:h-[500px] xs:w-[350px] xs:h-[450px]"
+        >
+          <div class="home-cards bg-secondary" id="card-design">
+            <i
+              class="ri-pencil-ruler-2-line text-primary font-medium md:text-[30px] xs:text-[25px] text-[15px]"
+            ></i>
+            <p
+              class="text-primary sm:text-[18px] text-[15px] font-medium font-body"
+            >
+              Web Design
+            </p>
+          </div>
+
+          <div class="home-cards bg-secondary" id="card-development">
+            <i
+              class="ri-code-box-line text-primary font-medium md:text-[30px] xs:text-[25px] text-[15px]"
+            ></i>
+            <p
+              class="text-primary sm:text-[18px] text-[15px] font-medium font-body"
+            >
+              Web Development
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="about sm:px-20 lg:px-1 lg:py-16 sm:pt-[250px] xs:py-[40px] py-16 max-w-7xl mx-auto relative z-0"
+      id="about"
+    >
+      <div
+        class="title-container about-title xs:w-1/2 lg:w-1/3 flex justify-end px-8 rounded-r-[20px] shadow-card bg-secondary absolute left-0 lg:-left-[10%]"
+      >
+        <h1
+          class="about-title font-title md:text-[110px] sm:text-[90px] xs:text-[70px] text-[30px] tracking-[1.5px] text-primary"
+        >
+          ABOUT
+        </h1>
+      </div>
+
+      <div
+        class="about-container lg:mt-[300px] mt-56 relative flex flex-wrap gap-5 justify-center"
+      >
+        <div class="about-box xs:w-[300px] lg:w-[400px] w-full">
+          <div
+            class="w-full p-5 rounded-[20px] shadow-card bg-nav-bg md:bg-secondary flex justify-center items-center flex-col min-h-[360px]"
+          >
+            <i
+              class="ri-award-line text-primary text-[60px] md:text-[80px]"
+            ></i>
+            <h3
+              class="text-tertiary sm:text-[30px] text-center tracking-[1.5px]"
+            >
+              Experience
+            </h3>
+            <p class="text-tertiary font-body md:text-[20.8px] text-center p-5">
+              3 years experienced IT professional with a passion for web design
+              and development.
+            </p>
+          </div>
+        </div>
+        <div class="about-box xs:w-[300px] lg:w-[400px] w-full">
+          <div
+            class="w-full p-5 rounded-[20px] shadow-card bg-nav-bg md:bg-secondary flex justify-center items-center flex-col min-h-[360px]"
+          >
+            <i
+              class="ri-layout-2-line text-primary text-[60px] md:text-[80px]"
+            ></i>
+            <h3
+              class="text-tertiary sm:text-[30px] text-center tracking-[1.5px]"
+            >
+              UI/UX
+            </h3>
+            <p class="text-tertiary font-body md:text-[20.8px] text-center p-5">
+              2 years background in sales. I understand the importance of
+              creating user-friendly interfaces.
+            </p>
+          </div>
+        </div>
+        <div class="about-box xs:w-[300px] lg:w-[400px] w-full">
+          <div
+            class="w-full p-5 rounded-[20px] shadow-card bg-nav-bg md:bg-secondary flex justify-center items-center flex-col min-h-[360px]"
+          >
+            <i class="ri-team-line text-primary text-[60px] md:text-[80px]"></i>
+            <h3
+              class="text-tertiary sm:text-[30px] text-center tracking-[1.5px]"
+            >
+              Collaboration
+            </h3>
+            <p class="text-tertiary font-body md:text-[20.8px] text-center p-5">
+              Let's work together to create something beautiful and effective.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div id="  sm:px-20  sm:py-16  xs:py-[40px] py-16">
+        <div
+          class="tech-container flex flex-row flex-wrap sm:justify-center lg:gap-10 justify-between"
+        >
+          <div class="w-[15rem] h-[11rem]" id="tech"></div>
+
+          <div class="w-[15rem] h-[11rem]" id="tech"></div>
+
+          <div class="w-[15rem] h-[11rem]" id="tech"></div>
+
+          <div class="w-[15rem] h-[11rem]" id="tech"></div>
+
+          <div class="w-[15rem] h-[11rem]" id="tech"></div>
+
+          <div class="w-[15rem] h-[11rem]" id="tech"></div>
+
+          <div class="w-[15rem] h-[11rem]" id="tech"></div>
+
+          <div class="w-[15rem] h-[11rem]" id="tech"></div>
+
+          <div class="w-[15rem] h-[11rem]" id="tech"></div>
+          <div class="w-[15rem] h-[11rem]" id="tech"></div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="projects sm:px-0 lg:px-1 lg:py-16 xs:pt-[200px] xs:pb-[40px] py-16 max-w-7xl mx-auto relative z-0"
+      id="projects"
+    >
+      <div
+        class="title-container project-title xs:w-1/2 lg:w-1/3 flex justify-end px-8 rounded-r-[20px] shadow-card bg-secondary absolute left-0 lg:-left-[10%]"
+      >
+        <h1
+          class="project-title font-title md:text-[110px] sm:text-[90px] xs:text-[70px] text-[30px] tracking-[1.5px] text-primary project-title"
+        >
+          Works
+        </h1>
+      </div>
+
+      <div
+        class="projects-container lg:mt-[300px] mt-56 flex flex-wrap gap-5 justify-center items-center overflow-hidden lg:pl-[100%] sticky"
+      >
+        <ul class="flex xs:pl-[100rem] md:pl-0">
+          <li class="slider-item w-[25rem] h-[28rem] py-0 px-[1rem]">
+            <div class="slider-content w-full h-full relative overflow-hidden">
+              <div
+                class="absolute w-full h-full p-5 bg-secondary flex justify-center items-center flex-col inset-0 top-0 left-0 z-10 scale-y-0 show-project origin-top-left"
+              >
+                <h1
+                  class="text-primary sm:text-[30px] text-center tracking-[1.5px]"
+                >
+                  Portfolio
+                </h1>
+                <p
+                  class="font-body md:text-[20.8px] text-center p-5 text-tertiary"
+                >
+                  Design and Development
+                </p>
+                <div class="flex flex-col justify-center items-center gap-5">
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="project__button text-tertiary"
+                  >
+                    Visit site
+                    <i class="ri-arrow-right-line articles__icon"></i>
+                  </a>
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="project__button text-tertiary"
+                  >
+                    Visit figma
+                    <i class="ri-arrow-right-line articles__icon"></i>
+                  </a>
+                </div>
+              </div>
+              <img
+                src="https://picsum.photos/id/5/700
+                    "
+                alt="slider--image"
+                class="slider-img w-[200%] h-full bg-cover absolute inset-0 top-0 right-0 max-w-none"
+              />
+            </div>
+          </li>
+          <li class="slider-item w-[25rem] h-[28rem] py-0 px-[1rem]">
+            <div class="slider-content w-full h-full relative overflow-hidden">
+              <div
+                class="absolute w-full h-full p-5 bg-secondary flex justify-center items-center flex-col inset-0 top-0 left-0 z-10 scale-y-0 show-project origin-top-left"
+              >
+                <h1
+                  class="text-primary sm:text-[30px] text-center tracking-[1.5px]"
+                >
+                  Portfolio
+                </h1>
+                <p
+                  class="font-body md:text-[20.8px] text-center p-5 text-tertiary"
+                >
+                  Design and Development
+                </p>
+                <div class="flex flex-col justify-center items-center gap-5">
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="project__button text-tertiary"
+                  >
+                    Visit site
+                    <i class="ri-arrow-right-line articles__icon"></i>
+                  </a>
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="project__button text-tertiary"
+                  >
+                    Visit figma
+                    <i class="ri-arrow-right-line articles__icon"></i>
+                  </a>
+                </div>
+              </div>
+              <img
+                src="https://picsum.photos/id/0/700
+                    "
+                alt="slider--image"
+                class="slider-img w-[200%] h-full bg-cover absolute inset-0 top-0 right-0 max-w-none"
+              />
+            </div>
+          </li>
+          <li class="slider-item w-[25rem] h-[28rem] py-0 px-[1rem]">
+            <div class="slider-content w-full h-full relative overflow-hidden">
+              <div
+                class="absolute w-full h-full p-5 bg-secondary flex justify-center items-center flex-col inset-0 top-0 left-0 z-10 scale-y-0 show-project origin-top-left"
+              >
+                <h1
+                  class="text-primary sm:text-[30px] text-center tracking-[1.5px]"
+                >
+                  Portfolio
+                </h1>
+                <p
+                  class="font-body md:text-[20.8px] text-center p-5 text-tertiary"
+                >
+                  Design and Development
+                </p>
+                <div class="flex flex-col justify-center items-center gap-5">
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="project__button text-tertiary"
+                  >
+                    Visit site
+                    <i class="ri-arrow-right-line articles__icon"></i>
+                  </a>
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="project__button text-tertiary"
+                  >
+                    Visit figma
+                    <i class="ri-arrow-right-line articles__icon"></i>
+                  </a>
+                </div>
+              </div>
+              <img
+                src="https://picsum.photos/id/2/700
+                    "
+                alt="slider--image"
+                class="slider-img w-[200%] h-full bg-cover absolute inset-0 top-0 right-0 max-w-none"
+              />
+            </div>
+          </li>
+          <li class="slider-item w-[25rem] h-[28rem] py-0 px-[1rem]">
+            <div class="slider-content w-full h-full relative overflow-hidden">
+              <div
+                class="absolute w-full h-full p-5 bg-secondary flex justify-center items-center flex-col inset-0 top-0 left-0 z-10 scale-y-0 show-project origin-top-left"
+              >
+                <h1
+                  class="text-primary sm:text-[30px] text-center tracking-[1.5px]"
+                >
+                  Portfolio
+                </h1>
+                <p
+                  class="font-body md:text-[20.8px] text-center p-5 text-tertiary"
+                >
+                  Design and Development
+                </p>
+                <div class="flex flex-col justify-center items-center gap-5">
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="project__button text-tertiary"
+                  >
+                    Visit site
+                    <i class="ri-arrow-right-line articles__icon"></i>
+                  </a>
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="project__button text-tertiary"
+                  >
+                    Visit figma
+                    <i class="ri-arrow-right-line articles__icon"></i>
+                  </a>
+                </div>
+              </div>
+              <img
+                src="https://picsum.photos/id/3/700
+                    "
+                alt="slider--image"
+                class="slider-img w-[200%] h-full bg-cover absolute inset-0 top-0 right-0 max-w-none"
+              />
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section
+      class="contact sm:px-20 lg:px-1 lg:py-16 sm:pt-[250px] xs:py-[40px] py-16"
+      id="contact"
+    >
+      <div
+        class="title-container contact-title title-container project-title xs:w-1/2 lg:w-1/3 flex justify-end px-8 rounded-r-[20px] shadow-card bg-secondary absolute left-0 lg:-left-[10%]"
+      >
+        <h1
+          class="contact-title about-title font-title md:text-[110px] sm:text-[90px] xs:text-[70px] text-[30px] tracking-[1.5px] text-primary project-title"
+        >
+          Contact
+        </h1>
+      </div>
+      <div
+        class="contact-container lg:mt-[300px] mt-56 flex gap-5 justify-center items-center"
+      >
+        <div class="flex flex-col justify-center items-center gap-[4rem] z-10">
+          <div class="flex flex-col items-center">
+            <h2
+              class="text-primary font-medium lg:text-[60px] md:text-[46px] sm:text-[36px] xs:text-[25px]"
+            >
+              Send Me a Message
+            </h2>
+            <div
+              class="w-max h-max text-center px-[1rem] py-[0.25rem] bg-secondary shadow-contact rounded"
+            >
+              <a
+                href="mailto:jabidandresjimenezserrano@gmail.com"
+                class="text-tertiary font-body sm:text-[30px] text-center tracking-[1.5px]"
+                >hello@jabidjim.com</a
+              >
+            </div>
+          </div>
+          <div class="flex flex-col items-center">
+            <h2
+              class="text-primary font-medium lg:text-[60px] md:text-[46px] sm:text-[36px] xs:text-[25px]"
+            >
+              OR
+            </h2>
+            <h2
+              class="text-primary font-medium lg:text-[60px] md:text-[46px] sm:text-[36px] xs:text-[25px]"
+            >
+              Connect with me on social
+            </h2>
+
+            <div class="flex gap-x-20">
+              <div
+                class="w-max flex h-max text-center px-[1rem] py-[0.25rem] bg-secondary shadow-contact rounded"
+              >
+                <a
+                  href="#"
+                  target="_blank"
+                  class="text-tertiary font-body sm:text-[30px] text-center tracking-[1.5px]"
+                  >GITHUB</a
+                >
+              </div>
+              <div
+                class="w-max flex gap-y-20 h-max text-center px-[1rem] py-[0.25rem] bg-secondary shadow-contact rounded"
+              >
+                <a
+                  href="#"
+                  target="_blank"
+                  class="text-tertiary font-body sm:text-[30px] text-center tracking-[1.5px]"
+                  >LINKEDIN</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Main js ===================== -->
+    
+  </body>
+</html>

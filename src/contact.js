@@ -17,6 +17,7 @@ export function contact() {
     scrollTrigger: {
       trigger: titleContainer,
       start: "top 70%",
+      //markers: true,
       end: "top 60%",
       scrub: true,
     },

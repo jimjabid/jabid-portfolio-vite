@@ -42,8 +42,9 @@ export function about() {
         .timeline()
         .from(".about-box", {
           duration: isMobile ? 2 : 2.25,
+          //yPercent: 100,
           yPercent: isDesktop ? 100 : 0,
-          xPercent: isMobile ? 100 : 0,
+          xPercent: isMobile ? -120 : 0,
           stagger: isDesktop ? 0.5 : 0,
         })
         .to(".about-box:nth-child(1)", {
@@ -71,8 +72,8 @@ export function about() {
             start: "top 50%",
             anticipatePin: 1,
             //pin: aboutSection,
-            end: "+=1000px",
-            // markers: true,
+            end: "+=800px",
+            //markers: true,
             scrub: true,
           });
 

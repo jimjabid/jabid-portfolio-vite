@@ -60,6 +60,7 @@ export function about() {
             trigger: titleContainer,
             start: "top 60%",
             end: "top top",
+            anticipatePin: 1,
             //markers: true,
             scrub: true,
           })
@@ -68,8 +69,9 @@ export function about() {
             trigger: titleContainer,
             togglesAction: "restart pause resume none",
             start: "top 50%",
+            anticipatePin: 1,
             //pin: aboutSection,
-            end: "+=1200px",
+            end: "+=1000px",
             // markers: true,
             scrub: true,
           });
@@ -95,7 +97,7 @@ export function about() {
         ? ScrollTrigger.create({
             animation: techTL,
             trigger: aboutContainer,
-
+            anticipatePin: 1,
             start: "top 20%",
             end: "bottom 20%",
             //end: () => "+=" + aboutContainer.offsetHeight,
@@ -105,8 +107,9 @@ export function about() {
         : ScrollTrigger.create({
             animation: techTL,
             trigger: aboutSection,
+            anticipatePin: 1,
             start: "center 50%",
-            end: "+=1200px",
+            end: "+=1000px",
             //end: () => "+=" + aboutContainer.offsetHeight,
             scrub: true,
             //markers: true,
@@ -137,8 +140,9 @@ export function about() {
             scrollTrigger: {
               trigger: aboutSection,
               //markers: true,
-              id: "about",
+              //id: "about",
               start: "bottom 20%",
+              anticipatePin: 1,
               //end: "bottom 20%",
               end: () => "+=" + aboutSection.offsetHeight,
               scrub: true,

@@ -92,6 +92,7 @@ export function home() {
     ease: "powe3.out", // Use a power3 easing function
     scrollTrigger: {
       trigger: homeSection,
+      anticipatePin: 1,
       start: "60% 20%", // Start the animation when the trigger element is 60% in view from the top and 20% from the left
       end: () => "+=" + homeSection.offsetHeight, // End the animation when the trigger element height is reached
       scrub: true, // Enable scrubbing for smooth animation

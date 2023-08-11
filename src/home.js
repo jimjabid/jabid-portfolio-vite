@@ -5,6 +5,9 @@ import SplitTextJS from "./utils/splitText";
 // Register GSAP ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
+ScrollTrigger.normalizeScroll(true);
+ScrollTrigger.config({ ignoreMobileResize: true });
+
 export function home() {
   // ANIMATE THE HOME TITLES
   const titles = document.querySelectorAll(".hero-title");

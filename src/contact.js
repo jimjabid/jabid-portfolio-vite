@@ -2,6 +2,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.normalizeScroll(true);
+ScrollTrigger.config({ ignoreMobileResize: true });
 
 export function contact() {
   // Here starts animation for the contact title

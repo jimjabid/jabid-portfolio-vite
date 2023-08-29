@@ -121,7 +121,7 @@ export default class BallBackground {
   render() {
     if (!this.isPlaying) return;
     const time = this.clock.getElapsedTime();
-    this.mesh.rotation.y -= 0.0005;
+    //this.mesh.rotation.y -= 0.0005;
     this.mesh.position.y = Math.cos(time) * 0.01;
     this.mesh.position.z = Math.cos(time) * 0.01;
     this.material.uniforms.time.value = time;

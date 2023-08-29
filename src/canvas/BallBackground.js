@@ -1,5 +1,6 @@
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import vertexBg from "./shaders/vertexBg.glsl";
+import fragmentBg from "./shaders/fragmentBg.glsl";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -40,7 +41,7 @@ export default class BallBackground {
 
     this.addObjects();
     this.resize();
-    this.addLights();
+    // this.addLights();
     this.render();
     this.setupResize();
     // Handle scroll animation using GSAP ScrollTrigger
@@ -67,15 +68,29 @@ export default class BallBackground {
 
   addObjects() {
     this.geometry = new THREE.IcosahedronGeometry(1, 15);
-    this.material = new THREE.MeshPhysicalMaterial({
-      color: 0x224b6d,
-      roughness: 0,
-      metalness: 0.2,
-      clearcoat: 0.8,
-      clearcoatRoughness: 0.1,
+    this.material = new THREE.ShaderMaterial({
+      extensions: {
+        derivatives: "#extension GL_OES_standard_derivatives : enable",
+      },
+
+      uniforms: {
+        time: { value: 0.0 },
+        resolution: { value: new THREE.Vector4() },
+      },
+      vertexShader: vertexBg,
+      fragmentShader: fragmentBg,
       wireframe: true,
       side: THREE.DoubleSide,
     });
+    // this.material = new THREE.MeshPhysicalMaterial({
+    //   color: 0x224b6d,
+    //   roughness: 0,
+    //   metalness: 0.2,
+    //   clearcoat: 0.8,
+    //   clearcoatRoughness: 0.1,
+    //   wireframe: true,
+    //   side: THREE.DoubleSide,
+    // });
 
     this.mesh = new THREE.Mesh(this.geometry, this.material);
     this.mesh.castShadow = true;
@@ -84,12 +99,12 @@ export default class BallBackground {
   }
 
   // Add ambient and spot lights to the scene
-  addLights() {
-    let ambientLight = new THREE.AmbientLight(0xcccccc, 1.5);
-    let spotLight = new THREE.SpotLight(0xffffff, 2, 1000);
-    spotLight.position.set(-1, 0.5, 1);
-    this.scene.add(ambientLight, spotLight);
-  }
+  // addLights() {
+  //   let ambientLight = new THREE.AmbientLight(0xcccccc, 1.5);
+  //   let spotLight = new THREE.SpotLight(0xffffff, 2, 1000);
+  //   spotLight.position.set(-1, 0.5, 1);
+  //   this.scene.add(ambientLight, spotLight);
+  // }
 
   stop() {
     this.isPlaying = false;
@@ -107,9 +122,9 @@ export default class BallBackground {
     if (!this.isPlaying) return;
     const time = this.clock.getElapsedTime();
     this.mesh.rotation.y -= 0.0005;
-    // this.mesh.position.y = Math.cos(time) * 0.01;
-    // this.mesh.position.z = Math.cos(time) * 0.01;
-
+    this.mesh.position.y = Math.cos(time) * 0.01;
+    this.mesh.position.z = Math.cos(time) * 0.01;
+    this.material.uniforms.time.value = time;
     this.renderer.render(this.scene, this.camera);
     window.requestAnimationFrame(this.render.bind(this));
   }

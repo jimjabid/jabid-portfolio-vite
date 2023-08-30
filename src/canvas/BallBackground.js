@@ -164,13 +164,13 @@ export default class BallBackground {
       },
     });
 
-    // GSAP Reveal animation for the canvas
-    // const canvas = document.querySelectorAll("#myThreeJsCanvas");
-    // gsap.from(canvas, {
-    //   duration: 2,
-    //   opacity: 0,
-    //   delay: 2.9,
-    //   ease: "back.out",
-    // });
+    //GSAP Reveal animation for the canvas
+    const canvas = document.querySelectorAll("#myThreeJsCanvas");
+    gsap.from(canvas, {
+      duration: 2,
+      opacity: 0,
+      delay: 3.2,
+      ease: "back.out",
+    });
   }
 }

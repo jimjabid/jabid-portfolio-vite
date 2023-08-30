@@ -67,7 +67,8 @@ export default class BallBackground {
   }
 
   addObjects() {
-    this.geometry = new THREE.IcosahedronGeometry(1, 15);
+    this.geometry = new THREE.IcosahedronGeometry(1.1, 25);
+
     this.material = new THREE.ShaderMaterial({
       extensions: {
         derivatives: "#extension GL_OES_standard_derivatives : enable",
@@ -75,26 +76,41 @@ export default class BallBackground {
 
       uniforms: {
         time: { value: 0.0 },
+        uColor1: { value: new THREE.Color(0x0a151f) },
+        uColor2: { value: new THREE.Color(0xacd4f6) },
+        uColor3: { value: new THREE.Color(0x193852) },
         resolution: { value: new THREE.Vector4() },
       },
+
+      depthTest: false,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
       vertexShader: vertexBg,
       fragmentShader: fragmentBg,
-      wireframe: true,
+      wireframe: false,
       side: THREE.DoubleSide,
     });
-    // this.material = new THREE.MeshPhysicalMaterial({
-    //   color: 0x224b6d,
-    //   roughness: 0,
-    //   metalness: 0.2,
-    //   clearcoat: 0.8,
-    //   clearcoatRoughness: 0.1,
-    //   wireframe: true,
-    //   side: THREE.DoubleSide,
-    // });
 
-    this.mesh = new THREE.Mesh(this.geometry, this.material);
-    this.mesh.castShadow = true;
-    this.mesh.receiveShadow = true;
+    this.vertices = this.geometry.attributes.position.array.length;
+
+    let randoms = new Float32Array(this.vertices / 3);
+    let colorRandom = new Float32Array(this.vertices / 3);
+
+    for (let index = 0; index < this.vertices / 3; index++) {
+      randoms.set([Math.random()], index);
+      colorRandom.set([Math.random()], index);
+    }
+
+    this.geometry.setAttribute(
+      "randoms",
+      new THREE.BufferAttribute(randoms, 1)
+    );
+    this.geometry.setAttribute(
+      "colorRandom",
+      new THREE.BufferAttribute(colorRandom, 1)
+    );
+
+    this.mesh = new THREE.Points(this.geometry, this.material);
     this.scene.add(this.mesh);
   }
 

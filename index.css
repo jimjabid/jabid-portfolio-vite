@@ -85,6 +85,30 @@ html.lenis {
   transform: translateZ(0);
 }
 
+.home-left-col {
+  container: inline-size;
+}
+
+.hero-title {
+  font-size: 10cqw;
+}
+
+@media screen and (max-width: 1298px) {
+  .hero-title {
+    font-size: 8cqw;
+  }
+}
+@media screen and (max-width: 1089px) {
+  .hero-title {
+    font-size: 7cqw;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .hero-title {
+    font-size: 15cqw;
+  }
+}
+
 @media screen and (max-width: 780px) {
   .about-box {
     z-index: 3;

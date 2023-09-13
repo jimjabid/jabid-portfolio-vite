@@ -6,7 +6,7 @@ export default {
       colors: {
         "body-color": "#0a151f",
         primary: "#acd4f6",
-        secondary: "#224b6da6",
+        secondary: "#224b6de3",
         "nav-bg": "#224b6d",
         tertiary: "#f0f5fa",
       },

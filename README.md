@@ -1,6 +1,6 @@
 # Portfolio Website
 
-![Portfolio Website](./public/img/portfolio-project.png)
+![Portfolio Website](./public/img/readme-portfolio-project.png)
 
 This is my personal portfolio website, showcasing my work. It's built using a blend of Tailwind CSS, shaders, Three.js, and GSAP animations.
 

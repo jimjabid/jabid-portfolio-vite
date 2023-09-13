@@ -9,7 +9,7 @@ import { projects } from "./src/projects.js";
 import { contact } from "./src/contact.js";
 
 function init() {
-  //loader();
+  loader();
   smoothScroll();
   new BallBackground({ dom: document.querySelector("#myThreeJsCanvas") });
   BallAboutInstance();

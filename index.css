@@ -1,5 +1,5 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Merriweather:ital@1&family=Nunito&display=swap"); */
-@import './fonts.css';
+@import '/fonts.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

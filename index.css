@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Merriweather:ital@1&family=Nunito&display=swap");
-
+/* @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Merriweather:ital@1&family=Nunito&display=swap"); */
+@import './fonts.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -34,7 +34,17 @@ html.lenis {
 }
 
 .hero-title {
-  font-family: "Bebas Neue", cursive;
+  opacity: 0;
+  transform: translateY(100px);
+  animation: slideUp 0.8s ease forwards;
+  animation-delay: calc(var(--index) * 0.2s + 3.5s);
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .img-container {
@@ -93,6 +103,17 @@ html.lenis {
   font-size: 10cqw;
 }
 
+/* .about-box {
+  position: relative;
+  will-change: transform;
+  transform-origin: center center;
+  backface-visibility: hidden;
+}
+
+.about-container {
+  position: relative;
+  overflow: visible;
+} */
 @media screen and (max-width: 1298px) {
   .hero-title {
     font-size: 8cqw;
@@ -105,7 +126,7 @@ html.lenis {
 }
 @media screen and (max-width: 1023px) {
   .hero-title {
-    font-size: 15cqw;
+    font-size: 10cqw;
   }
 }
 
@@ -115,16 +136,19 @@ html.lenis {
     position: absolute;
   }
 
+
+
+
   .about-box:nth-child(1) {
     z-index: 2;
   }
   .about-box:nth-child(2) {
     z-index: 1;
-  }
+  } */
   /* .tech-balls {
     display: grid;
     grid-template-columns: 2fr;
-  } */
+  }
   /* .tech-container {
     margin-top: 25rem;
   } */
@@ -227,4 +251,87 @@ html.lenis {
       -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.5),
       -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em #ffffff;
   }
+}
+
+/* Loader styles */
+.blocks {
+  pointer-events: none;
+}
+
+.welcome-container {
+  overflow: hidden;
+}
+
+.loading-text {
+  font-size: clamp(2rem, 5vw, 4rem);
+  opacity: 0;
+  transform: translateY(100%);
+  letter-spacing: 0.2em;
+  text-shadow: 0 0 10px rgba(172, 212, 246, 0.2);
+}
+
+.text-shadow {
+  text-shadow: 0 0 10px rgba(172, 212, 246, 0.2);
+}
+
+.loader-container {
+  overflow: hidden;
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.loader-bg {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    rgba(172, 212, 246, 0.8) 50%,
+    var(--color-primary) 100%
+  );
+  transform-origin: left center;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(172, 212, 246, 0.3);
+  opacity: 0;
+}
+
+.loader::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    left: 200%;
+  }
+}
+
+/* Add to your :root or tailwind config */
+/* :root {
+  --color-primary: #acd4f6;
+} */
+
+.letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
 }

@@ -6,7 +6,7 @@ import SplitTextJS from "./utils/splitText";
 gsap.registerPlugin(ScrollTrigger);
 
 ScrollTrigger.normalizeScroll(true);
-ScrollTrigger.config({ ignoreMobileResize: true });
+
 
 export function home() {
   // ANIMATE THE HOME TITLES
@@ -49,41 +49,41 @@ export function home() {
     ease: "back.out", // Use a back-out easing function
   });
 
-  // ANIMATE THE ELEMENTS IN THE RIGHT COLUMN OF THE HOME SECTION
-  const homeRightCol = document.querySelector(".img-container");
-  gsap
-    .timeline()
-    .from(homeRightCol, {
-      duration: 2,
-      yPercent: 100,
-      opacity: 0,
-      delay: 2.9, // Delay the animation start by 2.9 seconds
-      ease: "power3.out", // Use a power3 easing function
-    })
-    .from(
-      "#card-design",
-      {
-        transformOrigin: "center",
-        rotateX: 360,
-        duration: 1.5,
-        opacity: 0,
-        yPercent: 100,
-        ease: "back.out", // Use a back-out easing function
-      },
-      "<+=0.5" // Start the animation 0.5 seconds after the previous one
-    )
-    .from(
-      "#card-development",
-      {
-        transformOrigin: "center",
-        rotateX: 360,
-        duration: 1.25,
-        opacity: 0,
-        yPercent: 100,
-        ease: "back.out", // Use a back-out easing function
-      },
-      "<+=0.25" // Start the animation 0.25 seconds after the previous one
-    );
+  // // ANIMATE THE ELEMENTS IN THE RIGHT COLUMN OF THE HOME SECTION
+  // const homeRightCol = document.querySelector(".img-container");
+  // gsap
+  //   .timeline()
+  //   .from(homeRightCol, {
+  //     duration: 2,
+  //     yPercent: 100,
+  //     opacity: 0,
+  //     delay: 2.9, // Delay the animation start by 2.9 seconds
+  //     ease: "power3.out", // Use a power3 easing function
+  //   })
+  //   .from(
+  //     "#card-design",
+  //     {
+  //       transformOrigin: "center",
+  //       rotateX: 360,
+  //       duration: 1.5,
+  //       opacity: 0,
+  //       yPercent: 100,
+  //       ease: "back.out", // Use a back-out easing function
+  //     },
+  //     "<+=0.5" // Start the animation 0.5 seconds after the previous one
+  //   )
+  //   .from(
+  //     "#card-development",
+  //     {
+  //       transformOrigin: "center",
+  //       rotateX: 360,
+  //       duration: 1.25,
+  //       opacity: 0,
+  //       yPercent: 100,
+  //       ease: "back.out", // Use a back-out easing function
+  //     },
+  //     "<+=0.25" // Start the animation 0.25 seconds after the previous one
+  //   );
 
   // PARALLAX ANIMATION FOR THE HOME SECTION
   const homeContainer = document.querySelector(".home-container");

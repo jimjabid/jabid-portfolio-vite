@@ -14,182 +14,72 @@
   </head>
   <body class="overflow-x-hidden relative z-0 bg-body-color" id="body">
     <div id="myThreeJsCanvas" class="fixed top-0 bottom-0 left-0 right-0"></div>
-    <div class="blocks w-screen h-screen fixed z-20">
-      <div
-        class="bg-nav-bg w-screen h-1/2 grid items-end justify-center block-top top-0 overflow-hidden"
-      >
-        <h1
-          class="md:text-[110px] sm:text-[90px] xs:text-[60px] text-[30px] font-title text-primary loading-text tracking-[20px] justify-self-center col-[initial] pointer-events-none translate-y-[100%]"
-        >
-          WELCOME
-        </h1>
+    <div class="blocks fixed w-screen h-screen z-20">
+      <!-- Top Block -->
+      <div class="block-top w-full h-1/2 bg-nav-bg grid items-end justify-center overflow-hidden">
+        <div class="welcome-container relative mb-8">
+          <h1 class="loading-text text-primary font-helvetica font-bold  tracking-[0.2em] text-center">
+            WELCOME
+          </h1>
+        </div>
       </div>
-      <div
-        class="bg-nav-bg w-screen h-1/2 grid items-start justify-center block-bottom bottom-0"
-      >
-        <div class="relative w-[400px] h-[2px] border-0 bg-primary">
-          <div class="loader absolute w-0 h-full bg-body-color"></div>
+      
+      <!-- Bottom Block -->
+      <div class="block-bottom w-full h-1/2 bg-nav-bg grid items-start justify-center">
+        <div class="loader-container relative w-[300px] sm:w-[400px] mt-8 opacity-0">
+          <div class="loader-bg w-full h-[2px] bg-[rgba(172,212,246,0.2)]">
+            <div class="loader w-0 h-full bg-primary opacity-0"></div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- <nav
-      class="sm:px-24 px-16 w-full flex items-center py-10 absolute left-0 right-0 top-0 z-20"
-    >
-      <img
-        id="nav-toggle"
-        src="/img/menu.svg"
-        alt="menu"
-        class="sm:hidden w-[28px] h-[28px] object-contain cursor-pointer absolute top-[2rem] right-[2rem]"
-      />
-      <div
-        class="sm:flex hidden items-center justify-end w-screen max-w-7xl mx-auto"
-      >
-        <ul class="list-none sm:flex flex-row sm:gap-20">
-          <li
-            class="nav-link text-tertiary hover:text-primary text-[18px] font-medium cursor-pointer font-body"
-          >
-            <a href="#home" class="font-body">Home</a>
-          </li>
-          <li
-            class="nav-link text-tertiary hover:text-primary text-[18px] font-medium cursor-pointer font-body"
-          >
-            <a href="#about" class="font-body">About</a>
-          </li>
-          <li
-            class="nav-link text-tertiary hover:text-primary text-[18px] font-medium cursor-pointer font-body"
-          >
-            <a href="#projects" class="font-body">Works</a>
-          </li>
-          <li
-            class="nav-link text-tertiary hover:text-primary text-[18px] font-medium cursor-pointer font-body"
-          >
-            <a href="#contact" class="font-body">Contact</a>
-          </li>
-        </ul>
-      </div>
-      <div
-        id="nav-menu"
-        class="sm:hidden flex fixed top-0 right-0 left-0 w-screen h-screen flex-1 justify-center items-center p-6 bg-nav-bg z-10"
-      >
-        <img
-          id="nav-close"
-          src="/img/close.svg"
-          alt="menu"
-          class="nav-close w-[28px] h-[28px] cursor-pointer absolute top-[2rem] right-[2rem]"
-        />
-
-        <ul class="list-none sm:flex sm:gap-20 flex-col gap-4">
-          <li
-            class="nav-link text-tertiary hover:text-primary text-[58px] font-medium cursor-pointer font-body"
-          >
-            <a href="#home" class="font-body nav__link">Home</a>
-          </li>
-          <li
-            class="nav-link text-tertiary hover:text-primary text-[58px] font-medium cursor-pointer font-body"
-          >
-            <a href="#about" class="font-body nav__link">About</a>
-          </li>
-          <li
-            class="nav-link text-tertiary hover:text-primary text-[58px] font-medium cursor-pointer font-body"
-          >
-            <a href="#projects" class="font-body nav__link">Works</a>
-          </li>
-          <li
-            class="nav-link text-tertiary hover:text-primary text-[58px] font-medium cursor-pointer font-body"
-          >
-            <a href="#contact" class="font-body nav__link">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </nav> -->
-
     <section class="home mx-auto" id="home">
-      <div
-        class="home-container lg:px-15 sm:px-20 xs:py-[120px] sm:py-[130px] py-32 lg:flex lg:flex-row xs:flex xs:flex-col xs:gap-11 xs:items-center lg:items-center lg:justify-around"
-      >
-        <div
-          class="home-left-col flex flex-col text-center lg:text-start font-title"
-        >
-          <h1
-            class="font-medium lg:text-[60px] md:text-[46px] sm:text-[36px] xs:text-[25px] text-tertiary font-greeting lg:mb-[100px] sm:mb-[60px] md:mb-[80px] mb-[50px] greeting z-0"
-          >
-            I am
-          </h1>
+      <div class="home-container lg:px-15 sm:px-20 xs:py-[120px] sm:py-[130px] py-32 min-h-screen flex items-center">
+        <div class="home-content home-left-col flex flex-col text-center lg:text-center font-title max-w-4xl mx-auto">
+          <!-- Greeting with subtle animation -->
+          <!-- <h1 class="font-helvetica font-medium lg:text-[60px] md:text-[46px] sm:text-[36px] xs:text-[25px] text-tertiary lg:mb-[100px] sm:mb-[60px] md:mb-[80px] mb-[50px] greeting z-0">
+            I'm
+          </h1> -->
 
-          <h1 class="z-10 hero-title text-primary font-title m-0 leading-0">
-            Jabid Jimenez
-          </h1>
-          <h1 class="z-10 hero-title text-primary font-title m-0 leading-0">
-            Web Designer
-          </h1>
-          <h1 class="z-10 hero-title text-primary font-title m-0 leading-0">
-            Web Developer
-          </h1>
+          <!-- Hero titles with enhanced focus -->
+          <div class="hero-titles-container mb-20">
+            <h1 class="uppercase z-10 hero-title text-primary text-shadow font-helvetica font-bold m-0 leading-0 lg:text-[100px] md:text-[65px] sm:text-[50px] text-[40px]">
+              Jabid Jimenez
+            </h1>
+            <h1 class="uppercase z-10 hero-title text-primary text-shadow font-helvetica font-bold m-0 leading-0 lg:text-[100px] md:text-[65px] sm:text-[50px] text-[40px]">
+              Frontend Dev
+            </h1>
+            <h1 class="uppercase z-10 hero-title text-primary text-shadow font-helvetica font-bold m-0 leading-0 lg:text-[100px] md:text-[65px] sm:text-[50px] text-[40px]">
+              Backend Dev
+            </h1>
+          </div>
 
-          <div
-            class="flex justify-center lg:justify-start md:mt-[100px] sm:mt-[60px] mt-[50px]"
-          >
-            <ul class="list-none flex items-center gap-16 z-0">
+          <!-- Social links with improved spacing -->
+          <div class="social-links mt-auto">
+            <ul class="list-none flex items-center justify-center lg:justify-center gap-16 z-0">
               <li>
-                <a
-                  href="https://www.linkedin.com/in/jabid-jimenez-serrano-960215175/"
-                  target="_blank"
-                  class="text-tertiary font-medium md:text-[30px] xs:text-[25px] text-[15px]"
-                >
+                <a href="https://www.linkedin.com/in/jabid-jimenez-serrano-960215175/"
+                   target="_blank"
+                   class="text-tertiary hover:text-primary text-shadow transition-colors duration-300 font-medium md:text-[30px] xs:text-[25px] text-[15px]">
                   <i class="ri-linkedin-box-line"></i>
                 </a>
               </li>
               <li>
-                <a
-                  href="https://github.com/jimjabid"
-                  target="_blank"
-                  class="text-tertiary font-medium md:text-[30px] xs:text-[25px] text-[15px]"
-                >
+                <a href="https://github.com/jimjabid"
+                   target="_blank"
+                   class="text-tertiary hover:text-primary text-shadow transition-colors duration-300 font-medium md:text-[30px] xs:text-[25px] text-[15px]">
                   <i class="ri-github-line"></i>
                 </a>
               </li>
               <li>
-                <a
-                  href="https://wa.me/5491166372967"
-                  target="_blank"
-                  class="text-tertiary font-medium md:text-[30px] xs:text-[25px] text-[15px]"
-                >
+                <a href="https://wa.me/5491166372967"
+                   target="_blank"
+                   class="text-tertiary hover:text-primary text-shadow transition-colors duration-300 font-medium md:text-[30px] xs:text-[25px] text-[15px]">
                   <i class="ri-whatsapp-line"></i>
                 </a>
               </li>
             </ul>
-          </div>
-        </div>
-
-        <div
-          class="flex flex-col justify-center items-center img-container bg-body-color md:mt-[50px] sm:mt-[30px] mt-[25px] sm:w-[450px] sm:h-[500px] xs:w-[350px] xs:h-[450px]"
-        >
-          <div class="home-cards bg-secondary" id="card-design">
-            <i
-              class="ri-pencil-ruler-2-line text-primary font-medium md:text-[30px] xs:text-[25px] text-[15px]"
-            ></i>
-            <p
-              class="text-primary sm:text-[18px] text-[15px] font-medium font-body"
-            >
-              Web Design
-            </p>
-          </div>
-          <img
-            src="/img/profile-img.png"
-            alt="home--image"
-            class="w-full h-full bg-cover absolute inset-0 top-0 right-0 max-w-none"
-          />
-
-          <div class="home-cards bg-secondary" id="card-development">
-            <i
-              class="ri-code-box-line text-primary font-medium md:text-[30px] xs:text-[25px] text-[15px]"
-            ></i>
-            <p
-              class="text-primary sm:text-[18px] text-[15px] font-medium font-body"
-            >
-              Web Development
-            </p>
           </div>
         </div>
       </div>
@@ -203,7 +93,7 @@
         class="title-container about-title xs:w-[60%] lg:w-1/3 flex justify-end px-8 rounded-r-[20px] shadow-card bg-secondary absolute left-0 lg:-left-[10%]"
       >
         <h1
-          class="about-title font-title md:text-[110px] sm:text-[90px] xs:text-[70px] text-[30px] tracking-[1.5px] text-primary"
+          class="about-title font-title md:text-[75px] sm:text-[45px] sm:text-[35px] text-[30px] tracking-[1.5px] text-primary text-shadow"
         >
           ABOUT
         </h1>
@@ -214,17 +104,17 @@
       >
         <div class="about-box xs:w-[300px] lg:w-[400px] w-full">
           <div
-            class="w-full p-5 rounded-[20px] shadow-card bg-nav-bg md:bg-secondary flex justify-center items-center flex-col min-h-[360px]"
+            class="w-full p-5 rounded-[20px] shadow-card bg-about-bg md:bg-secondary flex justify-center items-center flex-col min-h-[360px]"
           >
             <i
-              class="ri-award-line text-primary text-[60px] md:text-[80px]"
+              class="ri-award-line text-primary text-shadow text-[60px] md:text-[80px]"
             ></i>
             <h3
               class="text-tertiary sm:text-[30px] text-center tracking-[1.5px]"
             >
               Experience
             </h3>
-            <p class="text-tertiary font-body md:text-[20.8px] text-center p-5">
+            <p class="text-tertiary font-helvetica font-medium md:text-[20.8px] text-center p-5">
               3 years experienced IT professional with a passion for web design
               and development.
             </p>
@@ -232,17 +122,17 @@
         </div>
         <div class="about-box xs:w-[300px] lg:w-[400px] w-full">
           <div
-            class="w-full p-5 rounded-[20px] shadow-card bg-nav-bg md:bg-secondary flex justify-center items-center flex-col min-h-[360px]"
+            class="w-full p-5 rounded-[20px] shadow-card bg-about-bg md:bg-secondary flex justify-center items-center flex-col min-h-[360px]"
           >
             <i
-              class="ri-layout-2-line text-primary text-[60px] md:text-[80px]"
+              class="ri-layout-2-line text-primary text-shadow text-[60px] md:text-[80px]"
             ></i>
             <h3
               class="text-tertiary sm:text-[30px] text-center tracking-[1.5px]"
             >
               UI/UX
             </h3>
-            <p class="text-tertiary font-body md:text-[20.8px] text-center p-5">
+            <p class="text-tertiary font-helvetica font-medium md:text-[20.8px] text-center p-5">
               2 years background in sales. I understand the importance of
               creating user-friendly interfaces.
             </p>
@@ -250,15 +140,15 @@
         </div>
         <div class="about-box xs:w-[300px] lg:w-[400px] w-full">
           <div
-            class="w-full p-5 rounded-[20px] shadow-card bg-nav-bg md:bg-secondary flex justify-center items-center flex-col min-h-[360px]"
+            class="w-full p-5 rounded-[20px] shadow-card bg-about-bg md:bg-secondary flex justify-center items-center flex-col min-h-[360px]"
           >
-            <i class="ri-team-line text-primary text-[60px] md:text-[80px]"></i>
+            <i class="ri-team-line text-primary text-shadow text-[60px] md:text-[80px]"></i>
             <h3
               class="text-tertiary sm:text-[30px] text-center tracking-[1.5px]"
             >
               Collaboration
             </h3>
-            <p class="text-tertiary font-body md:text-[20.8px] text-center p-5">
+            <p class="text-tertiary font-helvetica font-medium md:text-[20.8px] text-center p-5">
               Let's work together to create something beautiful and effective.
             </p>
           </div>
@@ -289,222 +179,132 @@
         </div>
       </div>
     </section>
-    <section
-      class="projects sm:px-0 lg:px-1 lg:py-16 xs:pt-[200px] xs:pb-[40px] py-16 max-w-7xl mx-auto relative z-0"
-      id="projects"
-    >
-      <div
-        class="title-container project-title xs:w-[60%] lg:w-1/3 flex justify-end px-8 rounded-r-[20px] shadow-card bg-secondary absolute left-0 lg:-left-[10%]"
-      >
-        <h1
-          class="project-title font-title md:text-[110px] sm:text-[90px] xs:text-[70px] text-[30px] tracking-[1.5px] text-primary project-title"
-        >
+    <section class="projects sm:px-0 lg:px-1 lg:py-16 xs:pt-[200px] xs:pb-[40px] py-16 max-w-7xl mx-auto relative z-0" id="projects">
+      <div class="title-container project-title xs:w-[60%] lg:w-1/3 flex justify-end px-8 rounded-r-[20px] shadow-card bg-secondary absolute left-0 lg:-left-[10%]">
+        <h1 class="project-title font-title md:text-[75px] sm:text-[45px] sm:text-[35px] text-[30px] tracking-[1.5px] text-primary text-shadow">
           Works
         </h1>
       </div>
 
-      <div
-        class="projects-container lg:mt-[300px] mt-56 flex flex-wrap gap-5 justify-center items-center overflow-hidden lg:pl-[100%] sticky"
-      >
-        <ul class="flex xs:pl-[100rem] md:pl-0">
-          <li class="slider-item w-[25rem] h-[28rem] py-0 px-[1rem]">
-            <div class="slider-content w-full h-full relative overflow-hidden">
-              <div
-                class="absolute w-full h-full p-5 bg-secondary flex justify-center items-center flex-col inset-0 top-0 left-0 z-10 scale-y-0 show-project origin-top-left"
-              >
-                <h1
-                  class="text-primary sm:text-[30px] text-center tracking-[1.5px]"
-                >
+      <div class="projects-container swiper lg:mt-[300px] mt-56">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 - Shoe Customizer -->
+          <div class="swiper-slide">
+            <div class="slider-content w-[25rem] h-[28rem] relative overflow-hidden">
+              <div class="absolute w-full h-full p-5 bg-secondary flex justify-center items-center flex-col inset-0 top-0 left-0 z-10 scale-y-0 show-project origin-top-left">
+                <h1 class="text-primary text-shadow sm:text-[30px] text-center tracking-[1.5px]">
                   Shoe Customizer
                 </h1>
-                <p
-                  class="font-body md:text-[18.8px] text-center p-5 text-tertiary"
-                >
+                <p class="font-helvetica font-medium md:text-[18.8px] text-center p-5 text-tertiary">
                   3D shoe customizer created using
-                  <span class="text-primary font-body font-bold"
-                    >React Three</span
-                  >
-                  ,
-                  <span class="text-primary font-body font-bold">React</span>
-                  ,<span class="text-primary font-body font-bold"
-                    >Tailwind
-                  </span>
-                  and
-                  <span class="text-primary font-body font-bold"
-                    >Framer Motion</span
-                  >. This platform allow you to personalize a shoe. Just click
-                  any part of the shoe and customize it.
+                  <span class="text-primary text-shadow font-helvetica font-bold">React Three</span>,
+                  <span class="text-primary text-shadow font-helvetica font-bold">React</span>,
+                  <span class="text-primary text-shadow font-helvetica font-bold">Tailwind</span> and
+                  <span class="text-primary text-shadow font-helvetica font-bold">Framer Motion</span>. 
+                  This platform allow you to personalize a shoe. Just click any part of the shoe and customize it.
                 </p>
                 <div class="flex justify-center items-center gap-5">
-                  <a
-                    href="https://jimjabid.github.io/3DShoeCustomizer/"
-                    target="_blank"
-                    class="text-primary font-medium underline md:text-[30px] xs:text-[25px] text-[15px]"
-                  >
+                  <a href="https://jimjabid.github.io/3DShoeCustomizer/" target="_blank" class="text-primary text-shadow font-medium underline md:text-[30px] xs:text-[25px] text-[15px]">
                     <i class="ri-global-line"></i>
                   </a>
-                  <a
-                    href="https://github.com/jimjabid/3DShoeCustomizer"
-                    target="_blank"
-                    class="text-primary font-medium underline md:text-[30px] xs:text-[25px] text-[15px]"
-                  >
+                  <a href="https://github.com/jimjabid/3DShoeCustomizer" target="_blank" class="text-primary text-shadow font-medium underline md:text-[30px] xs:text-[25px] text-[15px]">
                     <i class="ri-file-code-line"></i>
                   </a>
                 </div>
               </div>
-              <img
-                src="/img/mock-up-shoe-cust.png"
-                alt="slider--image"
-                class="slider-img w-[150%] h-full bg-cover absolute inset-0 top-0 right-0 max-w-none"
-              />
+              <img src="/img/mock-up-shoe-cust.png" alt="slider--image" class="slider-img w-[150%] h-full bg-cover absolute inset-0 top-0 right-0 max-w-none" />
             </div>
-          </li>
-          <li class="slider-item w-[25rem] h-[28rem] py-0 px-[1rem]">
-            <div class="slider-content w-full h-full relative overflow-hidden">
-              <div
-                class="absolute w-full h-full p-5 bg-secondary flex justify-center items-center flex-col inset-0 top-0 left-0 z-10 scale-y-0 show-project origin-top-left"
-              >
-                <h1
-                  class="text-primary sm:text-[30px] text-center tracking-[1.5px]"
-                >
+          </div>
+
+          <!-- Slide 2 - Waves -->
+          <div class="swiper-slide">
+            <div class="slider-content w-[25rem] h-[28rem] relative overflow-hidden">
+              <div class="absolute w-full h-full p-5 bg-secondary flex justify-center items-center flex-col inset-0 top-0 left-0 z-10 scale-y-0 show-project origin-top-left">
+                <h1 class="text-primary text-shadow sm:text-[30px] text-center tracking-[1.5px]">
                   Waves
                 </h1>
-                <p
-                  class="font-body md:text-[18.8px] text-center p-5 text-tertiary"
-                >
-                  Explore top surf photographers in this showcase website
-                  Merging
-                  <span class="text-primary font-body font-bold">WebGl</span>
-                  world with
-                  <span class="text-primary font-body font-bold">HTML</span> ,
-                  <span class="text-primary font-body font-bold">CSS</span>
-                  ,<span class="text-primary font-body font-bold"
-                    >Three.js </span
-                  >,
-                  <span class="text-primary font-body font-bold"> GSAP</span>
+                <p class="font-helvetica font-medium md:text-[18.8px] text-center p-5 text-tertiary">
+                  Explore top surf photographers in this showcase website Merging
+                  <span class="text-primary text-shadow font-helvetica font-bold">WebGl</span> world with
+                  <span class="text-primary text-shadow font-helvetica font-bold">HTML</span>,
+                  <span class="text-primary text-shadow font-helvetica font-bold">CSS</span>,
+                  <span class="text-primary text-shadow font-helvetica font-bold">Three.js</span>,
+                  <span class="text-primary text-shadow font-helvetica font-bold">GSAP</span>
                   and shaders for image effects.
                 </p>
                 <div class="flex justify-center items-center gap-5">
-                  <a
-                    href="https://jimjabid.github.io/the-wave-project-v1/"
-                    target="_blank"
-                    class="text-primary font-medium underline md:text-[30px] xs:text-[25px] text-[15px]"
-                  >
+                  <a href="https://jimjabid.github.io/the-wave-project-v1/" target="_blank" class="text-primary text-shadow font-medium underline md:text-[30px] xs:text-[25px] text-[15px]">
                     <i class="ri-global-line"></i>
                   </a>
-                  <a
-                    href="https://github.com/jimjabid/the-wave-project-v1"
-                    target="_blank"
-                    class="text-primary font-medium underline md:text-[30px] xs:text-[25px] text-[15px]"
-                  >
+                  <a href="https://github.com/jimjabid/the-wave-project-v1" target="_blank" class="text-primary text-shadow font-medium underline md:text-[30px] xs:text-[25px] text-[15px]">
                     <i class="ri-file-code-line"></i>
                   </a>
                 </div>
               </div>
-              <img
-                src="/img/mock-up-wave-project.png"
-                alt="slider--image"
-                class="slider-img w-[150%] h-full bg-cover absolute inset-0 top-0 right-0 max-w-none"
-              />
+              <img src="/img/mock-up-wave-project.png" alt="slider--image" class="slider-img w-[150%] h-full bg-cover absolute inset-0 top-0 right-0 max-w-none" />
             </div>
-          </li>
-          <li class="slider-item w-[25rem] h-[28rem] py-0 px-[1rem]">
-            <div class="slider-content w-full h-full relative overflow-hidden">
-              <div
-                class="absolute w-full h-full p-5 bg-secondary flex justify-center items-center flex-col inset-0 top-0 left-0 z-10 scale-y-0 show-project origin-top-left"
-              >
-                <h1
-                  class="text-primary sm:text-[30px] text-center tracking-[1.5px]"
-                >
+          </div>
+
+          <!-- Slide 3 - Portfolio -->
+          <div class="swiper-slide">
+            <div class="slider-content w-[25rem] h-[28rem] relative overflow-hidden">
+              <div class="absolute w-full h-full p-5 bg-secondary flex justify-center items-center flex-col inset-0 top-0 left-0 z-10 scale-y-0 show-project origin-top-left">
+                <h1 class="text-primary text-shadow sm:text-[30px] text-center tracking-[1.5px]">
                   My Portfolio
                 </h1>
-                <p
-                  class="font-body md:text-[18.8px] text-center p-5 text-tertiary"
-                >
-                  This is the same portfolio website you are reading this from:
-                  a fusion of
-                  <span class="text-primary font-body font-bold">Tailwind</span>
-                  ,
-
-                  <span class="text-primary font-body font-bold"> shaders</span>
-                  ,
-                  <span class="text-primary font-body font-bold"
-                    >Three.js
-                  </span>
-                  and
-                  <span class="text-primary font-body font-bold"> GSAP</span>. I
-                  hope you like it so far.
+                <p class="font-helvetica font-medium md:text-[18.8px] text-center p-5 text-tertiary">
+                  This is the same portfolio website you are reading this from: a fusion of
+                  <span class="text-primary text-shadow font-helvetica font-bold">Tailwind</span>,
+                  <span class="text-primary text-shadow font-helvetica font-bold">shaders</span>,
+                  <span class="text-primary text-shadow font-helvetica font-bold">Three.js</span> and
+                  <span class="text-primary text-shadow font-helvetica font-bold">GSAP</span>. I hope you like it so far.
                 </p>
                 <div class="flex justify-center items-center gap-5">
-                  <a
-                    href="https://jimjabid.github.io/jabid-portfolio-vite/"
-                    target="_blank"
-                    class="text-primary font-medium underline md:text-[30px] xs:text-[25px] text-[15px]"
-                  >
+                  <a href="https://jimjabid.github.io/jabid-portfolio-vite/" target="_blank" class="text-primary text-shadow font-medium underline md:text-[30px] xs:text-[25px] text-[15px]">
                     <i class="ri-global-line"></i>
                   </a>
-                  <a
-                    href="https://github.com/jimjabid/jabid-portfolio-vite"
-                    target="_blank"
-                    class="text-primary font-medium underline md:text-[30px] xs:text-[25px] text-[15px]"
-                  >
+                  <a href="https://github.com/jimjabid/jabid-portfolio-vite" target="_blank" class="text-primary text-shadow font-medium underline md:text-[30px] xs:text-[25px] text-[15px]">
                     <i class="ri-file-code-line"></i>
                   </a>
                 </div>
               </div>
-              <img
-                src="/img/portfolio-project.png"
-                alt="slider--image"
-                class="slider-img w-[150%] h-full bg-cover absolute inset-0 top-0 right-0 max-w-none"
-              />
+              <img src="/img/portfolio-project.png" alt="slider--image" class="slider-img w-[150%] h-full bg-cover absolute inset-0 top-0 right-0 max-w-none" />
             </div>
-          </li>
-          <li class="slider-item w-[25rem] h-[28rem] py-0 px-[1rem]">
-            <div class="slider-content w-full h-full relative overflow-hidden">
-              <div
-                class="absolute w-full h-full p-5 bg-secondary flex justify-center items-center flex-col inset-0 top-0 left-0 z-10 scale-y-0 show-project origin-top-left"
-              >
-                <h1
-                  class="text-primary sm:text-[30px] text-center tracking-[1.5px]"
-                >
+          </div>
+
+          <!-- Slide 4 - ShoeCommerce -->
+          <div class="swiper-slide">
+            <div class="slider-content w-[25rem] h-[28rem] relative overflow-hidden">
+              <div class="absolute w-full h-full p-5 bg-secondary flex justify-center items-center flex-col inset-0 top-0 left-0 z-10 scale-y-0 show-project origin-top-left">
+                <h1 class="text-primary text-shadow sm:text-[30px] text-center tracking-[1.5px]">
                   ShoeCommerce
                 </h1>
-                <p
-                  class="font-body md:text-[18.8px] text-center p-5 text-tertiary"
-                >
-                  Explore my ongoing e-commerce platform project on GitHub.
-                  Crafted with
-                  <span class="text-primary font-body font-bold">React</span>
-                  ,
-                  <span class="text-primary font-body font-bold"> Node.js</span>
-                  ,
-                  <span class="text-primary font-body font-bold">MongoDB </span>
-                  ,
-                  <span class="text-primary font-body font-bold"> Express</span>
-                  and
-                  <span class="text-primary font-body font-bold">
-                    Bootstrap</span
-                  >. this dynamic shopping experience is a work in progress but
-                  you can check out the code on the link below.
+                <p class="font-helvetica font-medium md:text-[18.8px] text-center p-5 text-tertiary">
+                  Explore my ongoing e-commerce platform project on GitHub. Crafted with
+                  <span class="text-primary text-shadow font-helvetica font-bold">React</span>,
+                  <span class="text-primary text-shadow font-helvetica font-bold">Node.js</span>,
+                  <span class="text-primary text-shadow font-helvetica font-bold">MongoDB</span>,
+                  <span class="text-primary text-shadow font-helvetica font-bold">Express</span> and
+                  <span class="text-primary text-shadow font-helvetica font-bold">Bootstrap</span>. 
+                  This dynamic shopping experience is a work in progress but you can check out the code on the link below.
                 </p>
                 <div class="flex justify-center items-center gap-5">
-                  <a
-                    href="https://github.com/jimjabid/shoe-commerce"
-                    target="_blank"
-                    class="text-primary font-medium underline md:text-[30px] xs:text-[25px] text-[15px]"
-                  >
+                  <a href="https://github.com/jimjabid/shoe-commerce" target="_blank" class="text-primary text-shadow font-medium underline md:text-[30px] xs:text-[25px] text-[15px]">
                     <i class="ri-file-code-line"></i>
                   </a>
                 </div>
               </div>
-              <img
-                src="/img/shoe-commerce.png"
-                alt="slider--image"
-                class="slider-img w-[200%] h-full bg-cover absolute inset-0 top-0 right-0 max-w-none"
-              />
+              <img src="/img/shoe-commerce.png" alt="slider--image" class="slider-img w-[200%] h-full bg-cover absolute inset-0 top-0 right-0 max-w-none" />
             </div>
-          </li>
-        </ul>
+          </div>
+        </div>
+        
+        <!-- Add pagination -->
+        <div class="swiper-pagination"></div>
+        
+        <!-- Add navigation -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
       </div>
     </section>
     <section
@@ -515,7 +315,7 @@
         class="contact-title title-container xs:w-[70%] lg:w-1/3 flex justify-end px-8 rounded-r-[20px] shadow-card bg-secondary absolute left-0 lg:-left-[10%]"
       >
         <h1
-          class="contact-title font-title md:text-[110px] sm:text-[90px] xs:text-[70px] text-[30px] tracking-[1.5px] text-primary"
+          class="contact-title font-title md:text-[75px] sm:text-[45px] sm:text-[35px] text-[30px] tracking-[1.5px] text-primary text-shadow"
         >
           Contact
         </h1>
@@ -526,7 +326,7 @@
         <div class="flex flex-col justify-center items-center gap-[4rem] z-10">
           <div class="flex flex-col items-center">
             <h2
-              class="text-primary font-medium lg:text-[60px] md:text-[46px] sm:text-[36px] xs:text-[25px]"
+              class="text-primary text-shadow font-medium lg:text-[60px] md:text-[46px] sm:text-[36px] xs:text-[25px]"
             >
               Send Me a Message
             </h2>
@@ -535,19 +335,19 @@
             >
               <a
                 href="mailto:jabidandresjimenezserrano@gmail.com"
-                class="text-tertiary font-body sm:text-[30px] text-center tracking-[1.5px]"
+                class="text-tertiary font-helvetica sm:text-[30px] text-center tracking-[1.5px]"
                 >jabidandresjimenezserrano@gmail.com</a
               >
             </div>
           </div>
           <div class="flex flex-col items-center">
             <h2
-              class="text-primary font-medium lg:text-[60px] md:text-[46px] sm:text-[36px] xs:text-[25px]"
+              class="text-primary text-shadow font-medium lg:text-[60px] md:text-[46px] sm:text-[36px] xs:text-[25px]"
             >
               OR
             </h2>
             <h2
-              class="text-primary font-medium lg:text-[60px] md:text-[46px] sm:text-[36px] xs:text-[25px]"
+              class="text-primary text-shadow font-medium lg:text-[60px] md:text-[46px] sm:text-[36px] xs:text-[25px]"
             >
               Connect with me on social
             </h2>
@@ -559,7 +359,7 @@
                 <a
                   href="https://github.com/jimjabid"
                   target="_blank"
-                  class="text-tertiary font-body sm:text-[30px] text-center tracking-[1.5px]"
+                  class="text-tertiary font-helvetica sm:text-[30px] text-center tracking-[1.5px]"
                   >GITHUB</a
                 >
               </div>
@@ -569,7 +369,7 @@
                 <a
                   href="https://www.linkedin.com/in/jabid-jimenez-serrano-960215175/"
                   target="_blank"
-                  class="text-tertiary font-body sm:text-[30px] text-center tracking-[1.5px]"
+                  class="text-tertiary font-helvetica sm:text-[30px] text-center tracking-[1.5px]"
                   >LINKEDIN</a
                 >
               </div>

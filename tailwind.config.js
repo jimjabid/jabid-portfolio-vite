@@ -6,8 +6,9 @@ export default {
       colors: {
         "body-color": "#0a151f",
         primary: "#acd4f6",
-        secondary: "#224b6de3",
+        secondary: "#224b6d80",
         "nav-bg": "#224b6d",
+        "about-bg": "#224b6d80",
         tertiary: "#f0f5fa",
       },
       boxShadow: {
@@ -20,9 +21,8 @@ export default {
         tablet: "771px",
       },
       fontFamily: {
-        body: ["Nunito", "serif"],
-        title: ["Bebas Neue", "cursive"],
-        greeting: ["Merriweather", "serif"],
+        helvetica: ["Helvetica Neue", "sans-serif"],
+        bosch: ["Bosch", "serif"],
       },
       lineHeight: {
         0: "0",

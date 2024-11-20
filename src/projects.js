@@ -1,153 +1,138 @@
+import Swiper from 'swiper';
+import { Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-ScrollTrigger.normalizeScroll(true);
-ScrollTrigger.config({ ignoreMobileResize: true });
 
 export function projects() {
-  // HERE STARTS THE REVEAL ANIMATION FOR PROJECT´S SECTION
-
-  const projectsTitleContainer = document.querySelector(
-    ".projects > .title-container"
-  );
-  const projectTitle = document.querySelectorAll(" .project-title");
-  const sliderItem = document.querySelectorAll(".slider-item");
-  const projectContainer = document.querySelector(".projects-container");
-  const projectsContent = document.querySelectorAll(".slider-content");
-  const projects = document.querySelectorAll(".show-project");
-  const items = document.querySelectorAll(".slider-item");
-  const width = (items.length - 1) * 120;
-  console.log(items);
-  console.log(width);
-  const section = document.querySelector(".projects");
-
-  let mm = gsap.matchMedia(section);
-  let breakPoint = 780;
-
-  gsap.from(projectTitle, {
-    duration: 3.5,
+  // Title animation
+  gsap.from(".project-title", {
+    duration: 1.5,
     xPercent: -100,
     opacity: 0,
-    ease: "powe3.out",
-    stagger: 0.5,
     scrollTrigger: {
-      trigger: projectsTitleContainer,
+      trigger: ".projects",
       start: "top 70%",
       end: "top 60%",
       scrub: true,
-    },
-  });
-
-  gsap.from(sliderItem, {
-    duration: 3.5,
-    opacity: 0,
-    ease: "powe3.out",
-    stagger: 0.25,
-    scrollTrigger: {
-      trigger: projectContainer,
-      start: "top 70%",
-      end: "top 40%",
-      scrub: true,
-    },
-  });
-
-  // HERE STARTS THE ANIMATION FOR THE PROJECT´S SLIDER
-
-  gsap.set(projects, { opacity: 0 });
-
-  projectsContent.forEach((project) => {
-    const animation = gsap.to(project.querySelector(".show-project"), {
-      paused: true,
-      opacity: 1,
-      scaleY: 1,
-      duration: 0.5,
-      ease: "power4.out",
-    });
-    project.addEventListener("mouseenter", () => animation.play());
-    project.addEventListener("mouseleave", () => animation.reverse());
-  });
-
-  /**
-   * Gsap animations
-   */
-
-  mm.add(
-    {
-      isDesktop: `(min-width: ${breakPoint}px)`,
-      isMobile: `(max-width: ${breakPoint - 1}px)`,
-    },
-    (context) => {
-      let { isDesktop, isMobile } = context.conditions;
-
-      let sliderTL = gsap.to(".slider-item", {
-        xPercent: -width,
-        ease: "none",
-      });
-
-      isDesktop
-        ? ScrollTrigger.create({
-            animation: sliderTL,
-            trigger: section,
-            start: "20% top",
-            end: () => "+=" + section.offsetWidth,
-            scrub: true,
-            pin: true,
-            anticipatePin: 1,
-          })
-        : ScrollTrigger.create({
-            animation: sliderTL,
-            trigger: section,
-            start: "20% top",
-            end: () => "+=" + section.offsetWidth * 2,
-            scrub: true,
-            id: "slider",
-
-            pin: true,
-            anticipatePin: 1,
-          });
-
-      items.forEach((item) => {
-        let imgTl = gsap.to(item.querySelector(".slider-img"), {
-          xPercent: -50,
-        });
-        isDesktop
-          ? ScrollTrigger.create({
-              animation: imgTl,
-              trigger: section,
-              start: "top top",
-              end: () => "+=" + section.offsetWidth,
-              scrub: true,
-            })
-          : ScrollTrigger.create({
-              animation: imgTl,
-              trigger: section,
-
-              id: "img",
-              start: "20% top",
-              end: () => "+=" + section.offsetWidth * 2,
-              scrub: true,
-            });
-      });
     }
-  );
+  });
 
-  // HERE STARTS SCROLL paralax animation for projects elements
+  const swiper = new Swiper('.projects-container', {
+    modules: [Navigation, Pagination, EffectCoverflow],
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    initialSlide: 1,
+    loop: true,
+    spaceBetween: 30,
+    coverflowEffect: {
+      rotate: 0,
+      stretch: 0,
+      depth: 100,
+      modifier: 2.5,
+      slideShadows: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      // Mobile
+      320: {
+        slidesPerView: 1,
+        effect: 'slide',
+      },
+      // Tablet
+      768: {
+        slidesPerView: 2,
+        effect: 'coverflow',
+      },
+      // Desktop
+      1024: {
+        slidesPerView: 3,
+        effect: 'coverflow',
+      }
+    },
+    on: {
+      init: function() {
+        handleProjectHover();
+      },
+    }
+  });
 
-  // const projectSection = document.querySelector(".pin-spacer");
+  // Handle project hover effects
+  function handleProjectHover() {
+    const projects = document.querySelectorAll('.slider-content');
+    
+    projects.forEach(project => {
+      const projectInfo = project.querySelector('.show-project');
+      
+      project.addEventListener('mouseenter', () => {
+        gsap.to(projectInfo, {
+          scaleY: 1,
+          duration: 0.5,
+          ease: "power3.out"
+        });
+      });
 
-  // gsap.to(projectContainer, {
-  //   duration: 3.25,
-  //   yPercent: -100,
-  //   // opacity: 0,
-  //   ease: "powe3.out",
-  //   scrollTrigger: {
-  //     trigger: projectSection,
-  //     start: "80% 20%",
-  //     end: "bottom top",
-  //     // end: () => "+=" + projectSection.offsetHeight,
-  //     scrub: true,
-  //     // markers: true,
-  //   },
-  // });
+      project.addEventListener('mouseleave', () => {
+        gsap.to(projectInfo, {
+          scaleY: 0,
+          duration: 0.3,
+          ease: "power3.in"
+        });
+      });
+
+      // For mobile
+      project.addEventListener('click', () => {
+        if (window.innerWidth < 768) {
+          gsap.to(projectInfo, {
+            scaleY: projectInfo.scaleY === 1 ? 0 : 1,
+            duration: 0.5,
+            ease: "power3.inOut"
+          });
+        }
+      });
+    });
+  }
+
+  // Add custom styles
+  const style = document.createElement('style');
+  style.textContent = `
+    .swiper-pagination-bullet {
+      background: var(--primary-color, #fff);
+      opacity: 0.5;
+    }
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: var(--primary-color, #fff);
+    }
+    .swiper-slide {
+      opacity: 0.4;
+      transition: opacity 0.3s;
+    }
+    .swiper-slide-active {
+      opacity: 1;
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Cleanup function
+  return () => {
+    if (swiper) {
+      swiper.destroy();
+    }
+    style.remove();
+  };
 }

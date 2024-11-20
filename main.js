@@ -20,6 +20,19 @@ ScrollTrigger.config({
   ignoreMobileResize: true,
 });
 
+function initTechBalls() {
+  const techContainer = document.querySelector('.tech-container');
+  if (!techContainer) {
+    console.error('Tech container not found');
+    return;
+  }
+  
+  // Wait for next frame to ensure DOM is ready
+  requestAnimationFrame(() => {
+    BallAboutInstance();
+  });
+}
+
 function init() {
   // Initialize lazy loading
   lazyLoadImages();
@@ -50,6 +63,9 @@ function init() {
   about();
   projects();
   contact();
+
+  // Initialize tech balls after a short delay to ensure DOM is ready
+  setTimeout(initTechBalls, 100);
 
   // Cleanup on page unload
   window.addEventListener('unload', () => {

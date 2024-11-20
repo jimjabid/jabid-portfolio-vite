@@ -16,14 +16,24 @@ import { DecalGeometry } from "three/addons/geometries/DecalGeometry.js";
 
 class BallAbout {
   constructor(options) {
-    // Create a new scene
+    // Add validation
+    if (!options.dom) {
+      console.error("No DOM element provided for BallAbout");
+      return;
+    }
+
     this.scene = new THREE.Scene();
-
-    // Set the container for the renderer
     this.container = options.dom;
-    this.width = this.container.offsetWidth;
-    this.height = this.container.offsetHeight;
+    
+    // Check if container is visible
+    const rect = this.container.getBoundingClientRect();
+    if (rect.width === 0 || rect.height === 0) {
+      console.warn("Container has zero dimensions:", rect);
+    }
 
+    this.width = rect.width || 240; // Fallback width
+    this.height = rect.height || 176; // Fallback height
+    
     // Create a WebGL renderer with antialiasing and alpha (for transparency)
     this.renderer = new THREE.WebGLRenderer({
       antialias: true,
@@ -75,68 +85,141 @@ class BallAbout {
   }
 
   addObjects(imageURL) {
-    // Create an IcosahedronGeometry
-    this.geometry = new THREE.IcosahedronGeometry(1, 1);
+    // Create a more detailed icosahedron for particle positions
+    this.geometry = new THREE.IcosahedronGeometry(1, 4);
+    
+    // Convert geometry to particles
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particleCount = this.geometry.attributes.position.count;
+    
+    // Create arrays for particle positions and random values
+    const positions = new Float32Array(particleCount * 3);
+    const randoms = new Float32Array(particleCount);
+    
+    // Copy positions from icosahedron and add random values
+    for (let i = 0; i < particleCount; i++) {
+      positions[i * 3] = this.geometry.attributes.position.array[i * 3];
+      positions[i * 3 + 1] = this.geometry.attributes.position.array[i * 3 + 1];
+      positions[i * 3 + 2] = this.geometry.attributes.position.array[i * 3 + 2];
+      randoms[i] = Math.random();
+    }
+    
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    particlesGeometry.setAttribute('random', new THREE.BufferAttribute(randoms, 1));
 
-    // Create a MeshPhysicalMaterial for the Icosahedron
-
-    this.material = new THREE.MeshPhysicalMaterial({
-      color: 0x224b6d,
-      roughness: 1,
-      metalness: 0.9,
-
-      clearcoat: 0,
-      clearcoatRoughness: 0,
-      flatShading: true,
-
-      side: THREE.DoubleSide,
+    // Create shader material for particles with matching colors
+    const particlesMaterial = new THREE.ShaderMaterial({
+      vertexShader: `
+        uniform float time;
+        attribute float random;
+        varying float vRandom;
+        varying float vNoise;
+        
+        void main() {
+          vRandom = random;
+          vec3 pos = position;
+          
+          // Add subtle movement
+          float noise = sin(time * 2.0 + random * 10.0) * 0.03;
+          pos += normal * noise;
+          vNoise = noise;
+          
+          vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
+          gl_Position = projectionMatrix * mvPosition;
+          
+          // Adjust point size based on distance and device
+          float size = 6.0;
+          #ifdef IS_MOBILE
+            size = 4.0;
+          #endif
+          gl_PointSize = size * (1.0 / -mvPosition.z);
+        }
+      `,
+      fragmentShader: `
+        varying float vRandom;
+        varying float vNoise;
+        
+        void main() {
+            // Keep the original smooth circle calculation
+            float dist = length(gl_PointCoord - vec2(0.5));
+            float alpha = 1.0 - smoothstep(-0.2, 0.5, dist);
+            
+            // Match background colors
+            vec3 color1 = vec3(0.102,0.216,0.318); // #0a151f
+            vec3 color2 = vec3(0.675, 0.831, 0.965); // #acd4f6
+            vec3 color3 = vec3(0.098, 0.220, 0.322); // #193852
+            
+            // Color selection logic matching fragmentBg.glsl
+            vec3 finalColor = color1;
+            if(vRandom > 0.99 && vRandom < 0.66) {
+                finalColor = color2;
+            } else if(vRandom > 0.66) {
+                finalColor = color3;
+            }
+            
+            // Add noise influence
+            finalColor += vNoise * 0.05;
+            
+            // Adjust mobile rendering
+            #ifdef IS_MOBILE
+                alpha *= 0.9;
+            #endif
+            
+            gl_FragColor = vec4(finalColor, alpha * 0.9);
+        }
+      `,
+      transparent: true,
+      uniforms: {
+        time: { value: 0 }
+      },
+      depthWrite: false,
+      blending: THREE.AdditiveBlending
     });
 
-    // Create a Mesh using the geometry and material
-    this.mesh = new THREE.Mesh(this.geometry, this.material);
-    this.mesh.scale.set(1.0, 1.0, 1.0);
+    // Create particle system
+    this.particles = new THREE.Points(particlesGeometry, particlesMaterial);
+    this.scene.add(this.particles);
 
-    // Enable casting and receiving shadows for the mesh
-    this.mesh.castShadow = true;
-    this.mesh.receiveShadow = true;
+    // Create a solid but invisible sphere for the decal
+    const decalSphere = new THREE.SphereGeometry(0.9, 32, 32);
+    const decalMesh = new THREE.Mesh(
+      decalSphere,
+      new THREE.MeshBasicMaterial({ 
+        visible: false,
+        transparent: true,
+        opacity: 0 
+      })
+    );
+    this.scene.add(decalMesh);
 
-    // Add the mesh to the scene
-    this.scene.add(this.mesh);
-
-    //Add Textures to be used on the decal material
+    // Load and apply decal with modified material
     const textureLoader = new THREE.TextureLoader();
     const texture = textureLoader.load(imageURL);
 
-    // Create a DecalMaterial with the provided image URL
-    const decalMaterial = new THREE.ShaderMaterial({
-      uniforms: {
-        uTexture: { value: texture },
-        transparent: true,
-      },
+    const decalMaterial = new THREE.MeshBasicMaterial({
+      map: texture,
       transparent: true,
-      vertexShader: vertex,
-      fragmentShader: fragment,
-
-      polygonOffset: true,
-      polygonOffsetFactor: -1,
-      polygonOffsetUnits: 0,
+      opacity: 1.0,
+      depthWrite: false,
+      depthTest: true,
+      emissive: new THREE.Color(0xffffff),
+      emissiveIntensity: 0.2
     });
 
-    // Set position, orientation, and size for the DecalGeometry
-    const position = new THREE.Vector3(0, 0, 0.1);
-    const orientation = new THREE.Euler(2 * Math.PI, 0, 6.25, "XYZ");
-    const size = new THREE.Vector3(1, 1, 5);
-
-    // Create a DecalGeometry and mesh using the mesh, position, orientation, and size
+    // Create and position decal with adjusted size
     const decalGeometry = new DecalGeometry(
-      this.mesh,
-      position,
-      orientation,
-      size
+      decalMesh,
+      new THREE.Vector3(0, 0, 0.1),  // Slightly forward
+      new THREE.Euler(0, 0, 0),
+      new THREE.Vector3(1.7, 1.7, 1.7)  // Slightly larger
     );
+    
     this.decal = new THREE.Mesh(decalGeometry, decalMaterial);
-
-    // Add the decal mesh to the scene
+    
+    // Ensure decal renders on top of particles
+    this.decal.renderOrder = 1;
+    this.particles.renderOrder = 0;
+    
     this.scene.add(this.decal);
   }
 
@@ -171,11 +254,30 @@ class BallAbout {
   // Render loop for animation
   render() {
     if (!this.isPlaying) return;
+    
     const time = this.clock.getElapsedTime();
-    this.mesh.position.y = Math.cos(time) * 0.1;
-    this.decal.position.y = Math.cos(time) * 0.1;
-    this.mesh.position.z = Math.cos(time) * 0.1;
-    this.decal.position.z = Math.cos(time) * 0.1;
+    
+    // Update particle uniforms
+    if (this.particles && this.particles.material.uniforms) {
+      this.particles.material.uniforms.time.value = time;
+    }
+    
+    // Synchronized floating animation
+    const floatY = Math.cos(time) * 0.05;
+    const floatZ = Math.sin(time) * 0.05;
+    
+    if (this.particles) {
+      this.particles.position.y = floatY;
+      this.particles.position.z = floatZ;
+    }
+    if (this.decal) {
+      this.decal.position.y = floatY;
+      this.decal.position.z = floatZ;
+      
+      // Add subtle rotation to decal
+      this.decal.rotation.y = Math.sin(time * 0.5) * 0.1;
+    }
+    
     this.controls.update();
     this.renderer.render(this.scene, this.camera);
     window.requestAnimationFrame(this.render.bind(this));
@@ -184,7 +286,7 @@ class BallAbout {
 
 // Function to create multiple BallAbout instances with different images
 export default function BallAboutInstances() {
-  const techElements = document.querySelectorAll("#tech");
+  const techElements = document.querySelectorAll(".tech-ball");
   const imageURLs = [
     figma,
     git,
@@ -197,8 +299,19 @@ export default function BallAboutInstances() {
     tailwind,
     threejs,
   ];
-  // Create BallAbout instances for each tech element with its corresponding image
-  techElements.forEach((element, index) => {
-    new BallAbout({ dom: element, imageURL: imageURLs[index] });
-  });
+  
+  // Add error handling and logging
+  try {
+    techElements.forEach((element, index) => {
+      if (index < imageURLs.length) {
+        console.log(`Initializing ball ${index} with image: ${imageURLs[index]}`);
+        new BallAbout({ 
+          dom: element, 
+          imageURL: imageURLs[index] 
+        });
+      }
+    });
+  } catch (error) {
+    console.error("Error initializing tech balls:", error);
+  }
 }

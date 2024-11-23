@@ -53,9 +53,10 @@ class BallAbout {
       1000
     );
 
-    this.camera.position.set(-0.3, -0.1, 3);
-    this.camera.zoom = 1.2;
-    //this.camera.zoom = 1;
+    // Optimize for mobile
+    const isMobile = window.innerWidth < 768;
+    this.camera.zoom = isMobile ? 1.5 : 1.2;
+    this.camera.position.set(-0.3, -0.1, isMobile ? 3.5 : 3);
     this.camera.updateProjectionMatrix();
 
     // Create a clock to measure time and set initial state for animation
@@ -65,10 +66,13 @@ class BallAbout {
     // Initialize the objects, lights, and controls
     this.addObjects(options.imageURL);
     this.addLights();
-    this.enableOrbitControls();
+    this.enableOrbitControls(isMobile);
     this.resize();
     this.render();
     this.setupResize();
+
+    // Reduce animation complexity for mobile
+    this.animationSpeed = isMobile ? 0.5 : 1;
   }
 
   setupResize() {
@@ -244,10 +248,17 @@ class BallAbout {
   }
 
   // Add orbit controls to the scene
-  enableOrbitControls() {
+  enableOrbitControls(isMobile) {
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     this.controls.enableZoom = false;
     this.controls.enableDamping = true;
+    
+    // Restrict rotation on mobile
+    if (isMobile) {
+      this.controls.enableRotate = true;
+      this.controls.autoRotate = false;
+      // this.controls.autoRotateSpeed = 1;
+    }
 
     this.controls.update();
   }
@@ -255,16 +266,16 @@ class BallAbout {
   render() {
     if (!this.isPlaying) return;
     
-    const time = this.clock.getElapsedTime();
+    const time = this.clock.getElapsedTime() * this.animationSpeed;
     
-    // Update particle uniforms
+    // Simplified animation for better performance
     if (this.particles && this.particles.material.uniforms) {
       this.particles.material.uniforms.time.value = time;
     }
     
-    // Synchronized floating animation
-    const floatY = Math.cos(time) * 0.05;
-    const floatZ = Math.sin(time) * 0.05;
+    // Reduce floating animation amplitude
+    const floatY = Math.cos(time) * 0.03;
+    const floatZ = Math.sin(time) * 0.03;
     
     if (this.particles) {
       this.particles.position.y = floatY;
@@ -273,9 +284,6 @@ class BallAbout {
     if (this.decal) {
       this.decal.position.y = floatY;
       this.decal.position.z = floatZ;
-      
-      // Add subtle rotation to decal
-      this.decal.rotation.y = Math.sin(time * 0.5) * 0.1;
     }
     
     this.controls.update();

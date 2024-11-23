@@ -37,52 +37,45 @@ export function about() {
     let { isDesktop, isMobile } = context.conditions;
 
     if (isMobile) {
-      // Initial state - stack cards on top of each other
+      // Simplified mobile animation
       gsap.set(aboutBoxes, {
         xPercent: 100,
-        yPercent: (i) => i * -5, // Slight offset for stacked appearance
-        rotation: (i) => i * 2, // Slight rotation for each card
-        opacity: 1,
-        zIndex: (i) => aboutBoxes.length - i, // Stack order
+        opacity: 0,
       });
 
       // Create timeline for mobile card animation
       let mobileTl = gsap.timeline({
         scrollTrigger: {
           trigger: aboutContainer,
-          start: "top 60%",
+          start: "top 70%",
           end: "bottom 20%",
-          scrub: 1,
-          //markers: true,
+          scrub: 0.5,
         }
       });
 
-      // Animate each card
+      // Animate each card with less dramatic effects
       aboutBoxes.forEach((box, i) => {
         mobileTl.to(box, {
           xPercent: 0,
-          yPercent: i * 110, // Space cards vertically
-          rotation: 0,
-          duration: 1,
+          opacity: 1,
+          duration: 0.5,
           ease: "power2.out",
-        }, i * 0.1); // Stagger the animations
+        }, i * 0.1);
       });
 
-      // Add hover effect for mobile
+      // Simplified touch interaction
       aboutBoxes.forEach(box => {
         box.addEventListener('touchstart', () => {
           gsap.to(box, {
-            scale: 1.05,
-            duration: 0.3,
-            ease: "power2.out"
+            scale: 1.02,
+            duration: 0.2,
           });
         });
 
         box.addEventListener('touchend', () => {
           gsap.to(box, {
             scale: 1,
-            duration: 0.3,
-            ease: "power2.in"
+            duration: 0.2,
           });
         });
       });

@@ -350,43 +350,62 @@ html.lenis {
   overflow: hidden;
 }
 
-/* iOS scroll optimizations */
-@supports (-webkit-touch-callout: none) {
+/* Base styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
   html, body {
-    height: 100%;
     overflow: auto;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-y: none;
   }
 
+  .lenis {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: auto;
+  }
+}
+
+/* iOS specific fixes */
+@supports (-webkit-touch-callout: none) {
+  html, body {
+    height: -webkit-fill-available;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
   body {
+    min-height: -webkit-fill-available;
     position: relative;
   }
-}
 
-/* Prevent iOS double-tap zoom */
-* {
-  touch-action: manipulation;
-}
-
-/* Optimize for iOS */
-.lenis.lenis-smooth {
-  @supports (-webkit-touch-callout: none) {
-    scroll-behavior: auto !important;
+  /* Ensure content is scrollable */
+  #body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
   }
 }
 
-/* Prevent scroll anchoring issues on iOS */
+/* Remove any touch-action manipulation */
 * {
-  overflow-anchor: none !important;
-}
-
-/* Optimize animations for iOS */
-@supports (-webkit-touch-callout: none) {
-  .gsap-animated {
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-  }
+  touch-action: auto;
 }

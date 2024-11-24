@@ -27,30 +27,27 @@ function initTechBalls() {
 }
 
 function init() {
-  // Detect iOS
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
   const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) && 
-                navigator.maxTouchPoints && 
-                navigator.maxTouchPoints > 1;
-  
-  // Global ScrollTrigger configuration
+                navigator.maxTouchPoints > 0;
+
+  // Configure ScrollTrigger
   ScrollTrigger.config({
-    limitCallbacks: true,
     ignoreMobileResize: true,
-    autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load'
+    autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load',
+    // Disable normalization on touch devices
+    normalizeScroll: !isTouch && !isIOS
   });
 
-  // iOS-specific optimizations
-  if (isIOS) {
-    ScrollTrigger.normalizeScroll(false);
-    
-    // Reduce animation complexity
-    gsap.config({
-      force3D: false,
-      autoSleep: 60,
-      nullTargetWarn: false
+  // Disable smooth scrolling on touch devices
+  if (isTouch || isIOS) {
+    ScrollTrigger.defaults({
+      scrub: 1,
+      ease: "power3.out",
+      // Use more touch-friendly settings
+      preventOverlaps: true,
+      fastScrollEnd: true,
     });
-  } else {
-    ScrollTrigger.normalizeScroll(true);
   }
 
   // Initialize lazy loading
@@ -91,6 +88,14 @@ function init() {
     if (cleanupScroll) cleanupScroll();
     if (ballBackground) ballBackground.dispose();
   });
+
+  // Add this near the end of your init function
+  if (isTouch || isIOS) {
+    // Enable touch scrolling
+    document.addEventListener('touchmove', (e) => {
+      if (!e.isTrusted) return; // Only handle real touch events
+    }, { passive: true });
+  }
 }
 
 // Initialize when DOM is ready

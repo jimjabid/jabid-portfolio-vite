@@ -35,18 +35,21 @@ function init() {
   ScrollTrigger.config({
     ignoreMobileResize: true,
     autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load',
-    // Disable normalization on touch devices
-    normalizeScroll: !isTouch && !isIOS
   });
 
-  // Disable smooth scrolling on touch devices
+  // Mobile-specific ScrollTrigger settings
   if (isTouch || isIOS) {
     ScrollTrigger.defaults({
-      scrub: 1,
+      scrub: true,
       ease: "power3.out",
-      // Use more touch-friendly settings
       preventOverlaps: true,
       fastScrollEnd: true,
+      // Add more lenient start/end positions for mobile
+      start: "top 80%",
+      end: "top 20%",
+      // Improve mobile performance
+      markers: false,
+      toggleActions: "play none none reverse"
     });
   }
 

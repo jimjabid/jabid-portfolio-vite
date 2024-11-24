@@ -7,6 +7,8 @@ gsap.registerPlugin(ScrollTrigger);
 // ScrollTrigger.normalizeScroll(true);
 
 export function home() {
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  
   // ANIMATE THE HOME TITLES
   const titles = document.querySelectorAll(".hero-title");
 
@@ -88,15 +90,15 @@ export function home() {
   const homeSection = document.querySelector(".home");
 
   gsap.to(homeContainer, {
-    duration: 3.25,
+    duration: isTouch ? 1 : 3.25,
     yPercent: -100,
-    ease: "powe3.out", // Use a power3 easing function
+    ease: "power3.out",
     scrollTrigger: {
       trigger: homeSection,
-      anticipatePin: 1,
-      start: "80% 20%", // Start the animation when the trigger element is 60% in view from the top and 20% from the left
-      end: () => "+=" + homeSection.offsetHeight, // End the animation when the trigger element height is reached
-      scrub: true, // Enable scrubbing for smooth animation
+      start: isTouch ? "top top" : "80% 20%",
+      end: () => "+=" + homeSection.offsetHeight,
+      scrub: isTouch ? 1 : true,
+      invalidateOnRefresh: true,
     },
   });
 }

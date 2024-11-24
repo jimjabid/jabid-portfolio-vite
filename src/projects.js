@@ -5,18 +5,24 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { gsap } from "gsap";
+import {ScrollTrigger }from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export function projects() {
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
   // Title animation
   gsap.from(".project-title", {
-    duration: 1.5,
-    xPercent: -100,
+    duration: isTouch ? 1 : 1.5,
+    xPercent: isTouch ? -50 : -100,
     opacity: 0,
     scrollTrigger: {
       trigger: ".projects",
-      start: "top 70%",
-      end: "top 60%",
-      scrub: true,
+      start: "top 80%",
+      end: "top 20%",
+      scrub: isTouch ? 1 : true,
+      once: isTouch,
     }
   });
 

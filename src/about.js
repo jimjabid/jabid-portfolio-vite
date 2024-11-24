@@ -12,19 +12,20 @@ export function about() {
   const aboutBoxes = gsap.utils.toArray(".about-box");
   const aboutBoxHeight = document.querySelector(".about-box").clientHeight;
   const aboutContainer = document.querySelector(".about-container");
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
   // Title animation
   gsap.from(aboutTitle, {
-    duration: isMobile ? 1.5 : 3.5,
-    xPercent: isMobile ? -50 : -100,
+    duration: isTouch ? 1.5 : 3.5,
+    xPercent: isTouch ? -50 : -100,
     opacity: 0,
     ease: "power2.out",
-    stagger: isMobile ? 0.2 : 0.5,
     scrollTrigger: {
       trigger: titleContainer,
       start: "top 80%",
-      end: "top 60%",
-      scrub: isMobile ? 1 : true,
+      end: "top 20%",
+      scrub: isTouch ? 1 : true,
+      once: isTouch,
     },
   });
 

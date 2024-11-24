@@ -6,42 +6,43 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 export function contact() {
-  // Here starts animation for the contact title
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+  // Contact title animation
   const titleContainer = document.querySelector(".contact > .title-container");
   const contactTitle = document.querySelectorAll(" .contact-title");
 
   gsap.from(contactTitle, {
-    duration: 3.5,
-    xPercent: -100,
+    duration: isTouch ? 1.5 : 3.5,
+    xPercent: isTouch ? -50 : -100,
     opacity: 0,
-    ease: "powe3.out",
-    stagger: 0.25,
+    ease: "power3.out",
     scrollTrigger: {
       trigger: titleContainer,
-      start: "top 70%",
-      //markers: true,
-      end: "top 60%",
-      scrub: true,
+      start: "top 80%",
+      end: "top 20%",
+      scrub: isTouch ? 1 : true,
+      once: isTouch,
     },
   });
 
-  // Here starts animation for the contact content
-
+  // Contact content animation
   const contactContainer = document.querySelector(".contact-container");
   const contactContainerChilds =
     contactContainer.querySelectorAll(":scope > *");
 
   gsap.from(contactContainerChilds, {
-    duration: 3.5,
-    yPercent: 100,
+    duration: isTouch ? 1.5 : 3.5,
+    yPercent: 50,
     opacity: 0,
-    ease: "powe3.out",
-    stagger: 0.25,
+    ease: "power3.out",
+    stagger: isTouch ? 0.1 : 0.25,
     scrollTrigger: {
       trigger: contactContainer,
-      start: "top 70%",
-      end: "top 50%",
-      scrub: true,
+      start: "top 80%",
+      end: "top 20%",
+      scrub: isTouch ? 1 : true,
+      once: isTouch,
     },
   });
 }

@@ -10,15 +10,8 @@ import { projects } from "./src/projects.js";
 import { contact } from "./src/contact.js";
 import { lazyLoadImages, lazyLoad3DModels } from './src/utils/lazyLoad.js';
 
-// Register GSAP plugins and configure ScrollTrigger
+// Register GSAP plugins and configure ScrollTrigger once
 gsap.registerPlugin(ScrollTrigger);
-ScrollTrigger.normalizeScroll(true);
-
-// Global ScrollTrigger configuration
-ScrollTrigger.config({
-  limitCallbacks: true,
-  ignoreMobileResize: true,
-});
 
 function initTechBalls() {
   const techContainer = document.querySelector('.tech-container');
@@ -34,10 +27,36 @@ function initTechBalls() {
 }
 
 function init() {
+  // Detect iOS
+  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) && 
+                navigator.maxTouchPoints && 
+                navigator.maxTouchPoints > 1;
+  
+  // Global ScrollTrigger configuration
+  ScrollTrigger.config({
+    limitCallbacks: true,
+    ignoreMobileResize: true,
+    autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load'
+  });
+
+  // iOS-specific optimizations
+  if (isIOS) {
+    ScrollTrigger.normalizeScroll(false);
+    
+    // Reduce animation complexity
+    gsap.config({
+      force3D: false,
+      autoSleep: 60,
+      nullTargetWarn: false
+    });
+  } else {
+    ScrollTrigger.normalizeScroll(true);
+  }
+
   // Initialize lazy loading
   lazyLoadImages();
   
-  // Initialize core components
+  // Initialize core components with iOS optimizations
   loader();
   const cleanupScroll = smoothScroll();
   

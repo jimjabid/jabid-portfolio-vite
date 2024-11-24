@@ -1,12 +1,10 @@
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import SplitTextJS from "./utils/splitText";
+import {ScrollTrigger }from "gsap/ScrollTrigger";
 
-// Register GSAP ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
-
-ScrollTrigger.normalizeScroll(true);
-
+// ScrollTrigger.normalizeScroll(true);
 
 export function home() {
   // ANIMATE THE HOME TITLES

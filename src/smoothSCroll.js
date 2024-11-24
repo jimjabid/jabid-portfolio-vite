@@ -2,32 +2,40 @@ import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
+// ScrollTrigger.normalizeScroll(true);
+
 export function smoothScroll() {
+  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) && 
+                navigator.maxTouchPoints && 
+                navigator.maxTouchPoints > 1;
+
   const lenis = new Lenis({
-    duration: 2.5,
+    duration: isIOS ? 1.0 : 1.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    wheelMultiplier: navigator.userAgent.includes('Safari') ? 0.5 : 1,
-    touchMultiplier: navigator.userAgent.includes('Safari') ? 1.5 : 1,
+    orientation: 'vertical',
+    gestureOrientation: 'vertical',
+    smoothWheel: !isIOS,
+    wheelMultiplier: 1,
     smoothTouch: false,
+    touchMultiplier: isIOS ? 1.5 : 2,
+    infinite: false,
   });
 
-  let rafId = null;
-  function raf(time) {
-    lenis.raf(time);
-    rafId = requestAnimationFrame(raf);
-  }
-
-  rafId = requestAnimationFrame(raf);
-
-  lenis.on("scroll", ScrollTrigger.update);
+  lenis.on('scroll', ScrollTrigger.update);
 
   gsap.ticker.add((time) => {
     lenis.raf(time * 1000);
   });
 
+  // Disable smooth scrolling on iOS
+  if (isIOS) {
+    lenis.destroy();
+    return () => {};
+  }
+
   return () => {
-    if (rafId) {
-      cancelAnimationFrame(rafId);
-    }
+    lenis.destroy();
+    gsap.ticker.remove(lenis.raf);
   };
 }

@@ -1,8 +1,8 @@
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import {ScrollTrigger }from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-ScrollTrigger.normalizeScroll(true);
+// ScrollTrigger.normalizeScroll(true);
+
 
 export function about() {
   const isMobile = window.innerWidth < 768;

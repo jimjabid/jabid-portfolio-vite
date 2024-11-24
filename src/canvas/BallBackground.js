@@ -2,12 +2,11 @@ import * as THREE from "three";
 import vertexBg from "./shaders/vertexBg.glsl";
 import fragmentBg from "./shaders/fragmentBg.glsl";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {ScrollTrigger }from "gsap/ScrollTrigger";
 
-// Register the ScrollTrigger plugin with GSAP
 gsap.registerPlugin(ScrollTrigger);
+// ScrollTrigger.normalizeScroll(true);
 
-ScrollTrigger.normalizeScroll(true);
 
 
 export default class BallBackground {
@@ -61,6 +60,18 @@ export default class BallBackground {
     // Store resources for cleanup
     this.resources = new Set();
     this.boundEvents = new Set();
+
+    // Optimize for iOS
+    const isIOS = /iPhone|iPad|iPod|Safari/i.test(navigator.userAgent);
+    if (isIOS) {
+      this.renderer.powerPreference = "default";
+      this.renderer.setPixelRatio(1); // Force 1x pixel ratio on iOS
+      this.camera.zoom = 1.1; // Slightly reduced zoom for better performance
+      
+      // Reduce animation complexity
+      this.animationSpeed = 0.5;
+      this.particleCount = Math.floor(this.particleCount * 0.7);
+    }
 
     this.addObjects();
     this.resize();
